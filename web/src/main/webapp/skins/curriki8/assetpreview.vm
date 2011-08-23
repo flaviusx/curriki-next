@@ -1,0 +1,12 @@
+#**
+ *  TODO: delete. This is the old preview in CB.
+ *#
+#template("xwikivars.vm")
+#template("layoutvars.vm")
+#set($showLeftPanels = "0")
+#set($showRightPanels = "0")
+#set($printss = true)
+#template("htmlheader.vm")
+<div id="printcontainer">
+#template("contentview.vm")
+</div>## printcontainer

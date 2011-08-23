@@ -1,0 +1,14 @@
+#**
+ *  Displays a document does not exist box
+ *#
+$response.setStatus(404)
+#template("startpage.vm")
+<div class="main layoutsubsection">
+#curriki_notfound()
+#if($hasGlobalAdmin)
+#set($url = $doc.getURL("edit", $editparams))
+<p>$xwiki.parseMessage("youcanclicktoedit")</p>
+#end
+#template("recyclebinlist.vm")
+</div>
+#template("endpage.vm")

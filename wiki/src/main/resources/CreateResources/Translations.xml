@@ -1,0 +1,1065 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xwikidoc>
+<web>CreateResources</web>
+<name>Translations</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.ShermanTank</creator>
+<author>XWiki.jkl1231</author>
+<customClass></customClass>
+<contentAuthor>XWiki.jkl1231</contentAuthor>
+<creationDate>1210378529000</creationDate>
+<date>1234553770000</date>
+<contentUpdateDate>1234553770000</contentUpdateDate>
+<version>357.1</version>
+<title></title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment>chanegd URL target for ICT </comment>
+<minorEdit>false</minorEdit>
+<syntaxId>xwiki/1.0</syntaxId>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>CreateResources.Translations</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>## from http://next.dev.curriki.org/xwiki/bin/edit/CreateResources/Translations?editor=wiki
+{pre}
+
+## If a string has the word "placeholder" after the = sign, it means text is coming. If it is blank after the = sign, then that means that that string can be ignored until further notice.
+
+## If you are adding a tooltip that uses JS you cannot use quotes or apostrophes. Use this instead " = &amp;#34; and ' = &amp;#39; 
+
+## TABLE OF CONTENTS FOR THIS DOCUMENT AS OF DECEMBER 2008:
+
+## FORM ACCESS WARNING
+## GLOBAL ELEMENTS USED IN MORE THAN ONE FORM
+##    STEP 3
+##    STEP 4
+##    REQUIRED FIELDS WARNING
+##    LEAVING FORM DIALOG
+## SIMPLE WIKI RESOURCE FORM
+##    TITLE AREA
+##    STEP 1
+##    STEP 2
+## SIMPLE HTML RESOURCE FORM
+##    TITLE AREA
+##    STEP 1
+##    STEP 2
+## CURRIKI LESSON PLAN FORM
+##    TITLE AREA
+##    STEP 1
+##    STEP 2
+## NORTEL LEARNIT LESSON PLAN FORM
+##    TITLE AREA
+##    STEP 1
+##    STEP 2
+## ACE LESSON PLAN FORM - NEEDS CLEAN-UP
+## WEBQUEST FORM
+##    TITLE AREA
+##    STEP 1
+##    STEP 2
+## FROM SCRATCH ERROR MESSAGES
+## LESSON PLAN ERROR MESSAGES
+## GLOBAL SET REQUIRED INFORMATION MODULE CONTENT
+## ASSET CLASS
+## ADD PATH SELECTION DIALOGS
+##    SELECT A TEMPLATE
+##    SELECT A FORMAT
+##    SRI PART 1
+##    SRI PART 2
+## ADD PATH FINAL MESSAGE DIALOGS
+##    FINAL MESSAGE NAVIGATION OPTIONS
+## ADD PATH ERROR MESSAGES
+
+
+
+## TRANS CONTENT BEGINS HERE:
+
+
+## FORM ACCESS WARNING
+createresources.needaccount=You must be a Curriki member and be &lt;a href="{0}"&gt;logged in&lt;/a&gt; to create a new resource.
+
+
+
+## GLOBAL ELEMENTS USED IN MORE THAN ONE FORM
+
+## STEP 3 (used in most forms)
+form.scratch.step3.header=Step 3. Confirm Rights &amp; Access Information
+form.scratch.step3.instruction=Whose content is this, who should be able to view or edit it, and how can it be used by others?
+
+## STEP 4 (used in SWR, SHR, CSLP, and NLLP forms; partial use in ACELP)
+form.scratch.step4.header=Step 4. Review &amp; Submit
+form.scratch.step4.instruction=Review your entries one last time before you click Submit. &lt;br /&gt; &lt;br /&gt;If your content is &lt;i&gt;not ready&lt;/i&gt; for others to see or use, remember to set the Access Privileges to "Private" above.
+
+form.scratch.submit.button=Submit
+form.scratch.cancel.button=Cancel
+
+## GENERIC REQUIRED FIELDS WARNING USED IN SRI DIALOGS AND FORMS
+form.required.fields.instruction=Fields with &lt;em class="required-indicator"&gt;!&lt;/em&gt; are required.
+form.required.fields.indicator=!
+
+
+## LEAVING FORM DIALOG
+form.leaving.dialog=Navigating away from this page will cause you to lose your work.
+form.leaving.dialog.ok.button=OK
+form.leaving.dialog.cancel.button=Cancel
+
+## DONE CREATING A RESOURCE FORM 
+form.done.url=/xwiki/bin/view/CreateResources/AssetDone
+form.done.created.lessonplan=The resource was successfully created.
+form.done.created.resource=The resource was successfully created.
+## Next string need not be translated... if what follows is ever seen by user, a severe error has occurred: 
+form.done.wysiwyg.error.wikitext=1 Error: SLP Wysiwyg Badness!
+
+## SIMPLE WIKI RESOURCE (SWR) FORM
+
+## SWR TITLE AREA
+form.scratch.url=/xwiki/bin/view/CreateResources/SimpleWikiResource
+form.scratch.title=Create a Resource from "Scratch" (Simple Wiki Document)
+form.scratch.title.description=Not sure what this is or can be? Learn more:
+form.title.description.link1=Samples
+form.title.description.link1.url=/xwiki/bin/view/Coll_curriki/SampleWikiResources?bc=;Coll_curriki.SampleModelResourcesCreatedUsingForms
+form.title.description.link3=Help
+form.title.description.link3.url=/xwiki/bin/view/Coll_curriki/CreatingResourceswithFormsTemplates?bc=;Coll_curriki.CurrikiHelp
+form.title.description.link2=Curriki Review System
+form.title.description.link2.url=/xwiki/bin/view/Main/AboutCurrikiReviewSystem
+form.title.description.link2.thumbnail=/xwiki/skins/curriki8/crs/crs.png
+
+## SWR STEP 1
+form.scratch.step1.header=Step 1. Enter Basic Information
+form.scratch.step1.instruction=What details will best describe and present this resource in search results &lt;br&gt;and other listings?
+
+form.scratch.title_title=Title:
+form.scratch.title_txt=Enter a title of no more than 250 characters (including spaces) for your resource.
+form.scratch.title_tooltip=This title will be displayed in listings (such as search results) and should help you and others quickly identify this resource.
+
+form.scratch.description_title=Description:
+form.scratch.description_txt=Enter a detailed description of the content and/or purpose of this resource. 
+form.scratch.description_tooltip=This description appears when people find your resource in listings. If this resource is part of a larger instructional context, you may wish to describe this relationship.
+
+##SWR STEP 2
+form.scratch.step2.header=Step 2. Enter &amp; Format Content
+form.scratch.step2.instruction=What content should appear in your resource?
+form.scratch.step2.content.title=Content:
+form.scratch.step2.content.instruction=Enter content in the editing window below. Format and develop your material with the buttons on the &lt;a href="http://www.curriki.org/xwiki/bin/view/Coll_curriki/FormattingContentwiththeWYSIWYGEditingToolbar?bc=;Coll_curriki.CurrikiHelp;Coll_curriki.ContributingtoEditingResourcesintheRepository" target="_blank"&gt;editing toolbar&lt;/a&gt;.
+
+############################
+## SIMPLE HTML RESOURCE (SHR) FORM
+
+## SHR FORM TITLE AREA
+
+form.html.scratch.url=/xwiki/bin/view/CreateResources/SimpleHTMLResource
+form.html.scratch.title=Create a Resource from "Scratch" (Simple HTML Document)
+form.html.scratch.title.description=Not sure what this is or can be? Learn more:
+form.html.title.description.link1=Samples
+form.html.title.description.link1.url=http://www.curriki.org/xwiki/bin/view/Coll_curriki/SampleHTMLResources?bc=;Coll_curriki.SampleModelResourcesCreatedUsingForms
+form.html.title.description.link3=Help
+form.html.title.description.link3.url=http://www.curriki.org/xwiki/bin/view/Coll_curriki/UsingtheHTMLResourcefromScratchForm?bc=;Coll_curriki.CurrikiHelp;Coll_curriki.ContributingtoEditingResourcesintheRepository;Coll_curriki.CreatingResourceswithFormsTemplates
+form.html.title.description.link2=Curriki Review System
+form.html.title.description.link2.url=http://www.curriki.org/xwiki/bin/view/Main/AboutCurrikiReviewSystem
+form.html.title.description.link2.thumbnail=/xwiki/skins/curriki8/crs/crs.png
+
+## SHR STEP 1
+form.html.scratch.step1.header=Step 1. Enter Basic Information
+form.html.scratch.step1.instruction=What details will best describe and present this resource in search results &lt;br&gt;and other listings?
+
+form.html.scratch.title_title=Title:
+form.html.scratch.title_txt=Enter a title of no more than 250 characters (including spaces) for your resource.
+form.html.scratch.title_tooltip=This title will be displayed in listings (such as search results) and should help you and others quickly identify this resource.
+
+form.html.scratch.description_title=Description:
+form.html.scratch.description_txt=Enter a detailed description of the content and/or purpose of this resource. 
+form.html.scratch.description_tooltip=This description appears when people find your resource in listings. If this resource is part of a larger instructional context, you may wish to describe this relationship.
+
+## SHR STEP 2
+form.html.scratch.step2.header=Step 2. Enter &amp; Format Content
+form.html.scratch.step2.instruction=What content should appear in your resource?
+form.html.scratch.step2.content.title=Content:
+form.html.scratch.step2.content.instruction=Enter content in the editing window below.
+
+
+
+## CURRIKI LESSON PLAN (CSLP) FORM
+
+## CSLP TITLE AREA
+
+lesson.plan.url=/xwiki/bin/view/CreateResources/CurrikiStandardLessonPlan
+lesson.plan.title=Create a Resource from a Template (Curriki Standard Lesson Plan)
+lesson.plan.title.description=Learn more:
+
+lesson.plan.title.description.link1=Models
+lesson.plan.title.description.link1.url=http://www.curriki.org/xwiki/bin/view/Coll_curriki/ModelLessonsfromCurrikisForm-BasedTemplate
+lesson.plan.title.description.link3=Help
+lesson.plan.title.description.link3.url=/xwiki/bin/view/Coll_curriki/CreatingResourceswithFormsTemplates?bc=;Coll_curriki.CurrikiHelp
+lesson.plan.title.description.link2=Curriki Review System
+lesson.plan.title.description.link2.url=/xwiki/bin/view/Main/AboutCurrikiReviewSystem
+lesson.plan.title.description.link2.thumbnail=/xwiki/skins/curriki8/crs/crs.png
+
+## CSLP STEP 1
+lesson.plan.step1.header=Step 1. Enter Basic Information
+lesson.plan.step1.instruction=How would you describe and categorize this resource for yourself &lt;br&gt;and other educators?
+
+lesson.plan.title_title=Title:
+lesson.plan.title_txt=Enter a title of no more than 250 characters (including spaces) for your lesson.
+lesson.plan.title_tooltip=This title will be displayed in listings (such as search results) and should help you and others quickly identify this resource.
+
+lesson.plan.description_title=Description:
+lesson.plan.description_txt=Provide a high-level description of this lesson's purpose, concepts and skills it addresses, and/or the lesson's learning activities, methods, or procedures.
+
+lesson.plan.description_tooltip=This description appears when people find your resource in listings. If this lesson is part of a larger instructional context, you may wish to describe this relationship.
+
+##CSLP STEP 2
+lesson.plan.step2.header=Step 2. Enter &amp; Format Lesson Content
+lesson.plan.step2.instruction=What would another educator need to know to successfully put this lesson &lt;br&gt;into practice?
+
+lesson.plan.introduction.title=Introduction:
+lesson.plan.introduction.instruction=
+lesson.plan.introduction.content=
+lesson.plan.introduction.tooltip=What is the context for this lesson? What are any pre-requisites for student knowledge or skills? How much time is required?
+
+lesson.plan.group.size.title=Group Size:
+lesson.plan.group.size.instruction=
+lesson.plan.group.size.content1=Any
+lesson.plan.group.size.content2=Whole class
+lesson.plan.group.size.content3=Small groups
+lesson.plan.group.size.content4=Partners
+lesson.plan.group.size.content5=Independent learners
+lesson.plan.group.size.tooltip=What is the ideal composition of students for this lesson?
+
+lesson.plan.learning.objectives.title=Learning Objectives:
+lesson.plan.learning.objectives.instruction=Enter the lesson&amp;#39;s learning objectives in the editing window below. Format and develop your material with the buttons on the &lt;a href="http://www.curriki.org/xwiki/bin/view/Coll_curriki/FormattingContentwiththeWYSIWYGEditingToolbar?bc=;Coll_curriki.CurrikiHelp;Coll_curriki.ContributingtoEditingResourcesintheRepository" target="_blank"&gt;editing toolbar&lt;/a&gt;.
+lesson.plan.learning.objectives.content=
+lesson.plan.learning.objectives.tooltip=What should students know and be able to do after completing this lesson?
+
+lesson.plan.guiding.question.title=Guiding Question:
+lesson.plan.guiding.question.instruction=
+lesson.plan.guiding.question.content=
+lesson.plan.guiding.question.tooltip=What key question will you share with students to guide their discussion and efforts in this lesson?
+
+lesson.plan.materials.title=Materials:
+lesson.plan.materials.instruction=
+lesson.plan.materials.content=
+lesson.plan.materials.tooltip=What supplies, books, special equipment, software, or other materials are required for this lesson?
+
+lesson.plan.procedures.title=Procedures:
+lesson.plan.procedures.instruction=Enter the lesson procedures in the editing window below. Format your material or attach files using the &lt;a href="http://www.curriki.org/xwiki/bin/view/Coll_curriki/FormattingContentwiththeWYSIWYGEditingToolbar?bc=;Coll_curriki.CurrikiHelp;Coll_curriki.ContributingtoEditingResourcesintheRepository" target="_blank"&gt;editing toolbar&lt;/a&gt;.
+lesson.plan.procedures.content=
+lesson.plan.procedures.tooltip=What instructions can you supply to ensure that you and others successfully carry out the intended instruction during this lesson? 
+
+lesson.plan.assessment.title=Assessment:
+lesson.plan.assessment.instruction=Enter text in the field to describe the assessment to be used. 
+lesson.plan.assessment.content=
+lesson.plan.assessment.tooltip=How can you assess the new knowledge and skills of students?
+
+lesson.plan.answer.key.title=Answer Key or Rubric:
+lesson.plan.answer.key.instruction=List answers in the space below, or develop a rubric by creating a table with the &lt;a href="http://www.curriki.org/xwiki/bin/view/Coll_curriki/FormattingContentwiththeWYSIWYGEditingToolbar?bc=;Coll_curriki.CurrikiHelp;Coll_curriki.ContributingtoEditingResourcesintheRepository" target="_blank"&gt;editing toolbar&lt;/a&gt;.
+lesson.plan.answer.key.content=
+lesson.plan.answer.key.tooltip=What criteria can be used to clarify expectations with students or quantify the assessment?
+
+lesson.plan.standards.title=Benchmark or Standards:
+lesson.plan.standards.instruction=
+lesson.plan.standards.content=
+lesson.plan.standards.tooltip=What standards or expectations does the lesson address, and in which framework? 
+
+lesson.plan.required.attachments.title=Required Attachments:
+lesson.plan.required.attachments.instruction=Select and upload files from your computer. Attached files cannot exceed 20 MB in total. These will be offered as links in the published lesson plan.
+lesson.plan.required.attachments.file.attached=Files that you attach to this resource do not appear as independent contributions on Curriki; they are presented only as hyperlinks within this resource, and they are covered by the license for this resource.&lt;br /&gt;&lt;br /&gt;After submitting this form, please consider adding curricular materials to Curriki as standalone resources, so these contributions can be discovered and reused more easily.
+lesson.plan.attachments.title=Attached Files:
+lesson.plan.required.attachments.tooltip=Attach any files referenced in the lesson, such as a handout, rubric, worksheet, or quiz.
+lesson.plan.attachments.browse.button=Browse
+lesson.plan.attachments.attach.button=Attach This File
+lesson.plan.attachments.delete=Remove
+lesson.plan.file.size.maximum=20000000
+lesson.plan.file.size.label=Total size of all attachments:
+lesson.plan.file.size.oversize=Attachments to this resource cannot exceed 20 MB in total. To save this resource, you must use "remove" link in "Required Attachments" to reduce total size of attachments. Please upload any additional files as standalone Curriki contribution instead of attaching it to this resource.
+lesson.plan.file.size.dialog=Attachments to this resource cannot exceed 20 MB in total. You may want to upload this file as a standalone Curriki contribution instead of attaching it to this resource.
+lesson.plan.file.size.dialog.button=OK
+
+
+##NORTEL LEARNIT (NLLP) LESSON PLAN FORM
+
+##NLLP TITLE AREA
+
+nortel.lesson.plan.url=/xwiki/bin/view/CreateResources/NortelLearniTLessonPlan
+nortel.lesson.plan.title=Create a Lesson Plan (Nortel LearniT 6E + S Template)
+nortel.lesson.plan.title.description=&lt;br&gt;Learn more:
+
+nortel.form.title.description.link1=Models
+nortel.form.title.description.link1.url=http://www.curriki.org/xwiki/bin/view/Coll_curriki/ModelLessonsfromNortelLearniTs6ETemplate?bc=;Coll_NortelLearniT.NortelLearniT6ESForm
+nortel.form.title.description.link2=Detailed Help on Using the Form
+nortel.form.title.description.link2.url=http://www.curriki.org/xwiki/bin/view/Coll_NortelLearniT/NortelLearniT6ESForm?bc
+nortel.form.title.description.link3=&lt;img src="/xwiki/bin/download/CreateResources/NortelLearniTLessonPlan/NLorglogo2Crev1207.JPG" /&gt;
+nortel.form.title.description.link3.url=http://www.curriki.org/xwiki/bin/view/Demo/nortellearnit
+nortel.form.title.description.link4=About 6E + S Lesson Plans
+nortel.form.title.description.link4.url=http://www.curriki.org/xwiki/bin/view/Coll_NortelLearniT/6eslessonplan?bc=;Coll_NortelLearniT.NortelLearniT6ESForm
+
+
+
+##NLLP STEP 1
+nortel.lesson.plan.title_title=Title:
+nortel.lesson.plan.title_txt=Enter a title for your resource. Use  no more than 250 characters (including spaces).
+nortel.lesson.plan.title_tooltip=This title will be displayed in listings (such as search results) and should help you and others quickly identify the resource.  Please observe proper spacing, capitalization, and punctuation to ensure a correct record display for users.
+
+nortel.lesson.plan.description_title=Description:
+nortel.lesson.plan.description_txt=Provide a high-level description of the purpose of this lesson, concepts and skills it addresses, and/or the lesson's learning activities, methods, or procedures.
+
+nortel.lesson.plan.description_tooltip=This description appears when people roll over the title of the resource. It is also searchable text that may help users locate it. If this lesson is part of a larger instructional context, you may wish to describe the relationship(s).
+
+
+##NLLP STEP 2
+
+nortel.lesson.plan.step2.title=Enter &amp; Format Lesson Content
+nortel.lesson.plan.step2.guidingquestion=What would another educator need to know to successfully put this lesson into practice?
+
+nortel.lesson.plan.overview.title=Overview:
+nortel.lesson.plan.overview.instruction=
+nortel.lesson.plan.overview.content=
+nortel.lesson.plan.overview.tooltip=Enter basic lesson description. Include brief learning objectives, student project formats.
+
+nortel.lesson.plan.techinteg.title=Technology Integration:
+nortel.lesson.plan.techinteg.instruction=
+nortel.lesson.plan.techinteg.content=
+nortel.lesson.plan.techinteg.tooltip=Indicate technologies/media students use, e.g., presentations, digital cameras, to explore/demonstrate topic understanding.
+
+nortel.lesson.plan.prereq.title=Prerequisite Experience:
+nortel.lesson.plan.prereq.instruction=
+nortel.lesson.plan.prereq.content=
+nortel.lesson.plan.prereq.tooltip=What pre-understandings (e.g., content) or capabilities (e.g., PowerPoint) do the students/teachers need?
+
+nortel.lesson.plan.preptime.title=Teacher Prep Time:
+nortel.lesson.plan.preptime.instruction=
+nortel.lesson.plan.preptime.content=
+nortel.lesson.plan.preptime.tooltip=Indicate time needed and pre-lesson steps and coordination.
+
+nortel.lesson.plan.timecomplete.title=Estimated Time for Completion:
+nortel.lesson.plan.timecomplete.instruction=
+nortel.lesson.plan.timecomplete.content=
+nortel.lesson.plan.timecomplete.tooltip=Enter total lesson time frame.
+
+nortel.lesson.plan.materials.title=Materials:
+nortel.lesson.plan.materials.instruction=
+nortel.lesson.plan.materials.content=
+nortel.lesson.plan.materials.tooltip=Enter supplies, handouts, equipment, software, books, resources, connectivity needed.
+
+nortel.lesson.plan.project.title=Project:
+nortel.lesson.plan.project.instruction=
+nortel.lesson.plan.project.content=
+nortel.lesson.plan.project.tooltip=Describe student project(s) in some detail, including how they will pursue and present information.
+
+nortel.lesson.plan.timemanagement.title=Time Management Tips:
+nortel.lesson.plan.timemanagement.instruction=
+nortel.lesson.plan.timemanagement.content=
+nortel.lesson.plan.timemanagement.tooltip=Provide hints about how to pace the lesson.
+
+nortel.lesson.plan.assess.title=Assessment:
+nortel.lesson.plan.assess.instruction=
+nortel.lesson.plan.assess.content=
+nortel.lesson.plan.assess.tooltip=Briefly indicate ongoing evaluation techniques for key student understandings. Note: Use Evaluate for detailed rubric(s).
+
+nortel.lesson.plan.engage.title=Engage:
+nortel.lesson.plan.engage.instruction=Enter and format your material using the WYSIWYG toolbar. Get &lt;a href="http://www.curriki.org/xwiki/bin/view/Coll_NortelLearniT/NortelLearniTUsingtheWhatYouSeeIsWhatYouGetWYSIWYGEditingToolbar?bc=;Coll_NortelLearniT.NortelLearniT6ESForm" target="_blank"&gt;Toolbar Help&lt;/a&gt;. View a video on &lt;a href="http://www.curriki.org/xwiki/bin/view/Coll_NortelLearniT/21eTeacherIntroductionEngage" target="_blank"&gt;Engage&lt;/a&gt;. 
+nortel.lesson.plan.engage.content=
+nortel.lesson.plan.engage.tooltip=Indicate specific activities to capture student interest and encourage questioning leading to topic exploration.
+
+nortel.lesson.plan.explore.title=Explore:
+nortel.lesson.plan.explore.instruction=Enter and format your material using the WYSIWYG toolbar. Get &lt;a href="http://www.curriki.org/xwiki/bin/view/Coll_NortelLearniT/NortelLearniTUsingtheWhatYouSeeIsWhatYouGetWYSIWYGEditingToolbar?bc=;Coll_NortelLearniT.NortelLearniT6ESForm" target="_blank"&gt;Toolbar Help&lt;/a&gt;. View a video on &lt;a href="http://www.curriki.org/xwiki/bin/view/Coll_NortelLearniT/21eTeacherExplore" target="_blank"&gt;Explore&lt;/a&gt;. 
+nortel.lesson.plan.explore.content=
+nortel.lesson.plan.explore.tooltip=Indicate activities and related technologies for student to perform/use to investigate the topic.
+
+nortel.lesson.plan.explain.title=Explain:
+nortel.lesson.plan.explain.instruction=Enter and format your material using the WYSIWYG toolbar. Get &lt;a href="http://www.curriki.org/xwiki/bin/view/Coll_NortelLearniT/NortelLearniTUsingtheWhatYouSeeIsWhatYouGetWYSIWYGEditingToolbar?bc=;Coll_NortelLearniT.NortelLearniT6ESForm" target="_blank"&gt;Toolbar Help&lt;/a&gt;. View a video on &lt;a href="http://www.curriki.org/xwiki/bin/view/Coll_NortelLearniT/21eTeacherExplain" target="_blank"&gt;Explain&lt;/a&gt;. 
+nortel.lesson.plan.explain.content=
+nortel.lesson.plan.explain.tooltip=Indicate the presentations or outputs and formats students will make and use to demonstrate new knowledge, understandings, capabilities.
+
+nortel.lesson.plan.elaborate.title=Elaborate:
+nortel.lesson.plan.elaborate.instruction=Enter and format your material using the WYSIWYG toolbar. Get &lt;a href="http://www.curriki.org/xwiki/bin/view/Coll_NortelLearniT/NortelLearniTUsingtheWhatYouSeeIsWhatYouGetWYSIWYGEditingToolbar?bc=;Coll_NortelLearniT.NortelLearniT6ESForm" target="_blank"&gt;Toolbar Help&lt;/a&gt;. View a video on &lt;a href="http://www.curriki.org/xwiki/bin/view/Coll_NortelLearniT/21eTeacherElaborate" target="_blank"&gt;Elaborate&lt;/a&gt;. 
+nortel.lesson.plan.elaborate.content=
+nortel.lesson.plan.elaborate.tooltip=Provide instructions on the specific project the student creates from the lesson plan activity.
+
+nortel.lesson.plan.evaluate.title=Evaluate:
+nortel.lesson.plan.evaluate.instruction=Enter and format your material using the WYSIWYG toolbar. Get &lt;a href="http://www.curriki.org/xwiki/bin/view/Coll_NortelLearniT/NortelLearniTUsingtheWhatYouSeeIsWhatYouGetWYSIWYGEditingToolbar?bc=;Coll_NortelLearniT.NortelLearniT6ESForm" target="_blank"&gt;Toolbar Help&lt;/a&gt;. View a video on &lt;a href="http://www.curriki.org/xwiki/bin/view/Coll_NortelLearniT/Evaluate" target="_blank"&gt;Evaluate&lt;/a&gt;. 
+nortel.lesson.plan.evaluate.content=
+nortel.lesson.plan.evaluate.tooltip=Provide/describe the rubric/method for evaluating learning of students as expressed in their activities/outputs.
+
+nortel.lesson.plan.extend.title=Extend:
+nortel.lesson.plan.extend.instruction=Enter and format your material using the WYSIWYG toolbar. Get &lt;a href="http://www.curriki.org/xwiki/bin/view/Coll_NortelLearniT/NortelLearniTUsingtheWhatYouSeeIsWhatYouGetWYSIWYGEditingToolbar?bc=;Coll_NortelLearniT.NortelLearniT6ESForm" target="_blank"&gt;Toolbar Help&lt;/a&gt;. View a video on &lt;a href="http://www.curriki.org/xwiki/bin/view/Coll_NortelLearniT/21eTeacherExtend" target="_blank"&gt;Extend&lt;/a&gt;. 
+nortel.lesson.plan.extend.content=
+nortel.lesson.plan.extend.tooltip=Frame some student-driven ways to expand existing investigations; communicate learning to others; apply knowledge in new circumstances.
+
+nortel.lesson.plan.standards.title=Standards:
+nortel.lesson.plan.standards.instruction=Enter and format your material using the WYSIWYG toolbar. Get &lt;a href="http://www.curriki.org/xwiki/bin/view/Coll_NortelLearniT/NortelLearniTUsingtheWhatYouSeeIsWhatYouGetWYSIWYGEditingToolbar?bc=;Coll_NortelLearniT.NortelLearniT6ESForm" target="_blank"&gt;Toolbar Help&lt;/a&gt;. View a video on &lt;a href="http://www.curriki.org/xwiki/bin/view/Coll_NortelLearniT/21eTeacherStandards" target="_blank"&gt;Standards&lt;/a&gt;. 
+nortel.lesson.plan.standards.content=
+nortel.lesson.plan.standards.tooltip=Indicate standards/frameworks the lesson addresses.
+
+nortel.lesson.plan.required.attachments.title=Required Attachments:
+nortel.lesson.plan.required.attachments.instruction=Select and upload files from your computer. Attached files cannot exceed 20 MB in total. These will be offered as links in the published lesson plan.
+nortel.lesson.plan.required.attachments.tooltip=Attach any files referenced in this lesson, such as a handout, rubric, worksheet, or quiz.
+nortel.lesson.plan.required.attachments.file.attached=Files that you attach to this resource do not appear as independent contributions on Curriki; they are presented only as hyperlinks within this resource, and they are covered by the license for this resource.&lt;br /&gt;&lt;br /&gt;After submitting this form, please consider adding curricular materials to Curriki as standalone resources, so these contributions can be discovered and reused more easily.
+nortel.lesson.plan.required.attachments.browse.button=Browse
+nortel.lesson.plan.required.attachments.attach.button=Attach This File
+nortel.lesson.plan.required.attachments.delete=Remove
+
+## NLLP OUTPUT
+
+## see macros.vm: macro currikiNortelIcon()
+nortel.lesson.plan.output.heading.icon.url=/xwiki/bin/download/CreateResources/NortelLearniTLessonPlan/NlorgCurrikiHP.png
+nortel.lesson.plan.output.heading.icon.height=75
+nortel.lesson.plan.output.heading.icon.width=225
+nortel.lesson.plan.output.heading.content=This lesson was created using the Nortel LearniT 6E + S template for integrating technology within the curriculum.
+
+## ACE LESSON PLAN FORM
+
+## ACELP TITLE AREA
+ace.lesson.plan.url=/xwiki/bin/view/CreateResources/ACELessonPlan
+ace.lesson.plan.title=Create a Resource from a Template (ACE Lesson Plan)
+ace.lesson.plan.title.description=Learn more:
+
+ace.lesson.plan.title.description.link1=Background &amp; Models
+ace.lesson.plan.title.description.link1.url=http://www.curriki.org/xwiki/bin/view/Coll_ACETeam/BackgroundandModels
+ace.lesson.plan.title.description.link3=Help
+ace.lesson.plan.title.description.link3.url=http://www.curriki.org/xwiki/bin/view/Coll_curriki/UsingtheACELessonPlanForm?bc=;Coll_curriki.CurrikiHelp;Coll_curriki.CreatingResourceswithFormsTemplates
+ace.lesson.plan.title.description.link2=Alliance for Catholic Education
+ace.lesson.plan.title.description.link2.url=http://www.curriki.org/xwiki/bin/view/Demo/ace
+ace.lesson.plan.title.description.link2.thumbnail.url=http://www.curriki.org/xwiki/bin/view/Demo/ace
+ace.lesson.plan.title.description.link2.thumbnail=/xwiki/bin/download/CreateResources/ACELessonPlan/CIAACEsmall.JPG
+
+## ACELP STEP 1
+ace.lesson.plan.step1.header=Step 1. Enter Basic Information
+ace.lesson.plan.step1.instruction=How would you describe and categorize this lesson for yourself &lt;br&gt;and other educators?
+
+ace.lesson.plan.title_title=Title:
+ace.lesson.plan.title_txt=Enter a title of no more than 250 characters (including spaces) for your lesson.
+ace.lesson.plan.title_tooltip=This title will be displayed in listings (such as search results) and should help you and others quickly identify it.
+
+ace.lesson.plan.description_title=Description:
+ace.lesson.plan.description_txt=Provide a description of this lesson's purpose, the general concepts and skills it addresses, and/or the lesson's learning activities, methods, or procedures. If this lesson is part of a unit, indicate the unit goal and where this lesson falls chronologically in the unit.
+ace.lesson.plan.description_tooltip=This description appears when people find your resource in listings.
+
+## ACELP STEP 2
+
+ace.lesson.plan.step2.header=Step 2. Enter &amp; Format Lesson Content
+ace.lesson.plan.step2.instruction=What would another educator need to know to successfully put this lesson &lt;br&gt;into practice?
+
+##CORRECT DISPLAY STRINGS FOR NUMBER OF DAYS
+ace.lesson.plan.introduction.title=Number of Days:
+ace.lesson.plan.introduction.instruction=Enter the estimated number of class days it will take students to meet the lesson plan objective.
+ace.lesson.plan.introduction.content=
+ace.lesson.plan.introduction.tooltip=Lesson plans that are 2-4 days in length help students connect discrete ideas or skills into larger, more complex concepts.
+
+ace.lesson.plan.number.days.title=Number of Days:
+
+##CORRECT DISPLAY STRINGS FOR PRIOR KNOWLEDGE
+ace.lesson.plan.group.size.title=Prior Knowledge:
+ace.lesson.plan.group.size.instruction=Describe what students need to know and be able to do in order to participate in this lesson's learning tasks and methods.
+ace.lesson.plan.group.size.content=
+ace.lesson.plan.group.size.tooltip=This may include concepts and skills covered in previous lessons, units, or grades.
+
+ace.lesson.plan.prior.knowledge.title=Prior Knowledge:
+
+##CORRECT DISPLAY FOR LESSON OBJECTIVE
+ace.lesson.plan.learning.objectives.title=Lesson Objective:
+ace.lesson.plan.learning.objectives.instruction=Articulate what students will know and be able to do by the end of the lesson.
+ace.lesson.plan.learning.objectives.content=
+ace.lesson.plan.learning.objectives.tooltip=Effective lesson plan objectives often ask students to connect ideas across several days, and build toward the unit goal.
+
+ace.lesson.plan.lesson.objective.title=Lesson Objective:
+
+##CORRECT DISPLAY FOR LESSON ASSESSMENT
+ace.lesson.plan.assessment.title=Lesson Assessment:
+ace.lesson.plan.assessment.instruction=Describe the individual and independent assessment for the lesson. Upload any supplemental files under Required Attachments below.
+ace.lesson.plan.assessment.content=
+ace.lesson.plan.assessment.tooltip=Include quizzes or other formal, summative assessments for the whole lesson; informal, formative assessment for each lesson day could also be cited here.
+
+ace.lesson.plan.lesson.assessment.title=Lesson Assessment:
+
+##CORRECT DISPLAY FOR BENCHMARK OR STANDARDS
+ace.lesson.plan.standards.title=Benchmark or Standards:
+ace.lesson.plan.standards.instruction=Cite benchmarks or standards addressed during the lesson.
+ace.lesson.plan.standards.content=
+ace.lesson.plan.standards.tooltip=It may be useful to include a reference for this citation, such as URLs for accessing the relevant standards documents.
+
+ace.lesson.plan.benchmark.standards.title=Benchmark or Standards:
+
+##CORRECT DISPLAY FOR MATERIALS
+ace.lesson.plan.materials.title=Materials Needed:
+ace.lesson.plan.materials.instruction=List all handouts, worksheets, presentation slides, lab equipment, etc. needed to carry out the lesson. Upload any supplemental files under Required Attachments below.
+ace.lesson.plan.materials.content=
+ace.lesson.plan.materials.tooltip=Be explicit about audio/video or other special equipment this lesson requires.
+
+ace.lesson.plan.materials.needed.title=Materials Needed:
+
+ace.lesson.plan.enrichment.title=Enrichment:
+ace.lesson.plan.enrichment.instruction=Identify experiences that would allow students to probe concepts at a deeper level.
+ace.lesson.plan.enrichment.content=
+ace.lesson.plan.enrichment.tooltip=This may include questions, assignments, project ideas, or connections to other lessons.
+
+ace.lesson.plan.accommodations.title=Accommodations:
+ace.lesson.plan.accommodations.instruction=Identify modifications for specific students or groups of students that might be necessary to help them meet the lesson objective.
+ace.lesson.plan.accommodations.content=
+ace.lesson.plan.accommodations.tooltip=Include any specific ideas/strategies you suggest for conducting this lesson with learners of different types.
+
+ace.lesson.plan.anticipated.problems.title=Anticipated Problems:
+ace.lesson.plan.anticipated.problems.instruction=Describe common challenges that the instructor might encounter during the lesson, or other procedural pitfalls related to student learning.
+ace.lesson.plan.anticipated.problems.content=
+ace.lesson.plan.anticipated.problems.tooltip=For example, you might include here any common student misconceptions, or how to manage classroom transitions.
+
+
+ace.lesson.plan.procedures.title=Procedures:
+ace.lesson.plan.procedures.instruction=Enter the details of how this lesson is carried out. In each row, include the time allotted for each task, the learning tasks that will take place during that time, and the methods or procedures utilized to accomplish that learning task.
+ace.lesson.plan.procedures.content=
+ace.lesson.plan.procedures.tooltip=What instructions can you supply to ensure that you and others successfully carry out the intended instruction during this lesson? 
+ace.lesson.plan.procedures.time.tooltip=Indicate the number of minutes or time interval for each day\\\\s learning tasks. 
+ace.lesson.plan.procedures.learningtask.tooltip=Articulate student-centered goals, instructions, activity descriptions, and lecture questions. 
+ace.lesson.plan.procedures.methods.tooltip=State how the learning task will be accomplished, (e.g., individual/pair/group work, direct instruction, or by other teaching methods). 
+ace.lesson.plan.procedures.row1.time_sample=Day 1
+ace.lesson.plan.procedures.row2.time_sample=Sample:10 min
+ace.lesson.plan.procedures.row2.learningtask_sample=Sample: Students practice summarizing the plot of a story.
+ace.lesson.plan.procedures.row2.methodorprocedure_sample=Sample: Work in pairs.
+ace.lesson.plan.procedures.table.null=No changes occurred in the table.
+ace.lesson.plan.procedures.addrow=Add a Row
+
+ace.lesson.plan.required.attachments.title=Required Attachments:
+ace.lesson.plan.required.attachments.instruction=Select and upload files from your computer. Attached files cannot exceed 20 MB in total. These will be offered as links in the published lesson plan.
+
+ace.lesson.plan.required.attachments.file.attached=Files that you attach to this resource do not appear as independent contributions on Curriki; they are presented only as hyperlinks within this resource, and they are covered by the license for this resource.&lt;br /&gt;&lt;br /&gt;After submitting this form, please consider adding curricular materials to Curriki as standalone resources, so these contributions can be discovered and reused more easily.
+ace.lesson.plan.attachments.title=Attached Files:
+ace.lesson.plan.required.attachments.tooltip=Attach any files referenced in the lesson, such as a handout, rubric, worksheet, or quiz.
+ace.lesson.plan.attachments.browse.button=Browse
+ace.lesson.plan.attachments.attach.button=Attach This File
+ace.lesson.plan.attachments.delete=Remove
+
+ace.lesson.plan.file.size.maximum=20000000
+ace.lesson.plan.file.size.label=Total size of all attachments:
+ace.lesson.plan.file.size.oversize=Attachments to this resource cannot exceed 20 MB in total. To save this resource, you must use "remove" link in "Required Attachments" to reduce total size of attachments. Please upload any additional files as standalone Curriki contribution instead of attaching it to this resource.
+ace.lesson.plan.file.size.dialog=Attachments to this resource cannot exceed 20 MB in total. You may want to upload this file as a standalone Curriki contribution instead of attaching it to this resource.
+ace.lesson.plan.file.size.dialog.button=OK
+
+## ACELP STEP 4
+
+form.scratch.step4.header=Step 4. Review &amp; Submit
+
+##CORRECT DISPLAY FOR STEP 4
+ace.form.scratch.step4.instruction=Review your entries one last time before you click Submit. &lt;br /&gt; &lt;br /&gt;If your content is &lt;i&gt;not ready&lt;/i&gt; for others to see or use, remember to set the Access Privileges to "Private" above.&lt;br /&gt; &lt;br /&gt;Note that there are two fields, Changes for Next Time and What Worked Well, that will appear in your resource upon submission. These will appear with placeholder content that should be updated after you have implemented this lesson. When you're ready to update this content, click "Edit" for this resource.
+
+form.scratch.submit.button=Submit
+form.scratch.cancel.button=Cancel
+
+## ACELP OUTPUT ONLY
+
+ace.lesson.plan.output.heading.icon.url=/xwiki/bin/download/CreateResources/ACELessonPlan/ACElogo.png
+ace.lesson.plan.output.heading.icon.height=118
+ace.lesson.plan.output.heading.icon.width=147
+ace.lesson.plan.output.heading.content=This lesson plan was created based on a template developed for the Curriculum, Instruction &amp; Assessment initiative sponsored by the Alliance for Catholic Education.
+
+ace.lesson.plan.changes_heading=Changes for Next Time:
+ace.lesson.plan.changes_content=Here the lesson author can reflect on changes for future years. After executing the lesson in the classroom, the member can edit this section of the wiki resource to describe changes for making the lesson more effective next time
+
+ace.lesson.plan.whatworked_heading=What Worked Well:
+ace.lesson.plan.whatworked_content=After executing the lesson in the classroom, edit the wiki resource to highlight particularly effective activities or assessments for reference in future years.
+
+##WEBQUEST (WQ) FORM
+
+##WEBQUEST TITLE AREA
+wq.url=/xwiki/bin/view/CreateResources/WebQuest
+wq.plan.title=Create a WebQuest from a Template
+wq.title.description=Learn more:
+
+wq.title.description.link1=Models
+wq.title.description.link1.url=http://www.curriki.org/xwiki/bin/view/Coll_curriki/ModelsCreatedUsingtheWebQuestTemplate
+wq.title.description.link2=Help
+wq.title.description.link2.url=http://www.curriki.org/xwiki/bin/view/Coll_curriki/UsingtheWebquestForm
+wq.title.description.link3=WebQuest Background
+wq.title.description.link3.url=http://www.curriki.org/xwiki/bin/view/Coll_curriki/WebQuestBackgroundInstructionalDesign
+wq.title.description.link4=Curriki Review System
+wq.title.description.link4.url=/xwiki/bin/view/Main/AboutCurrikiReviewSystem
+wq.title.description.link4.thumbnail=/xwiki/skins/curriki8/crs/crs.png
+
+##WEBQUEST STEP 1
+wq.step1.header=Step 1. Enter Basic Information
+wq.step1.instruction=What details will best describe and present this WebQuest in search results &lt;br&gt;and other listings?
+
+wq.info.title_title=Title:
+wq.info.title_txt=Enter a title of no more than 250 characters (including spaces) for your WebQuest.
+wq.info.title_tooltip=This title will be displayed in listings (such as search results) and should help you and others quickly identify this WebQuest.
+
+wq.info.description_title=Description:
+wq.info.description_txt=Enter a detailed description of the content and/or purpose of this WebQuest. 
+wq.info.description_tooltip=This description appears when people find your WebQuest in listings. If this WebQuest is part of a larger instructional context, you may wish to describe this relationship.
+
+##WEBQUEST STEP 2
+wq.step2.header=Step 2. Enter Content
+wq.step2.instruction=What content should students see as they interact with this WebQuest?
+wq.intro.title=Introduction:
+wq.intro.instruction=Write a short paragraph here to introduce the activity to students and communicate the Big Question (Essential Question, Guiding Question) around which the whole WebQuest is centered.
+wq.intro.content=
+wq.intro.tooltip=The purpose of this section is to both prepare and hook the learner. If there is a role or scenario involved (e.g., \\&amp;#34;You are a detective trying to identify the mysterious poet...\\&amp;#34;), here is where you\\&amp;#39;ll set the stage. Otherwise, use this section to provide a short advance organizer or overview. 
+
+wq.task.title=The Task:
+wq.task.instruction=Describe crisply and clearly what the end result of the learners' activities will be, directing your words to your students. If the final product involves using some tool (e.g., HyperStudio, the Web, video), mention it here. Try functions on the &lt;a href="http://www.curriki.org/xwiki/bin/view/Coll_curriki/FormattingContentwiththeWYSIWYGEditingToolbar?bc=;Coll_curriki.CurrikiHelp;Coll_curriki.ContributingtoEditingResourcesintheRepository" target="_blank"&gt;editing toolbar&lt;/a&gt; to format your text, add images, etc.
+wq.task.content=
+wq.task.tooltip=The Task could be a problem or mystery to be solved, a position to be formulated and defended, a product to be designed, a creative work, a journalistic account -- anything that requires the learners to process and transform the information they find. Do not use this section to list the steps that students will go through to get to the end point; that belongs in the Process section below.
+
+wq.process.title=The Process:
+wq.process.instruction=Addressing the student, describe the steps s/he should take to accomplish the task described above. You may wish to use the numbered list format in the &lt;a href="http://www.curriki.org/xwiki/bin/view/Coll_curriki/FormattingContentwiththeWYSIWYGEditingToolbar?bc=;Coll_curriki.CurrikiHelp;Coll_curriki.ContributingtoEditingResourcesintheRepository" target="_blank"&gt;editing toolbar&lt;/a&gt;. Upload any additional materials you've created to support steps of The Process using the Required Attachments section below, and reference use of these in the relevant step.
+wq.process.content=
+wq.process.tooltip=Learners will access the online resources that you have identified as they go through The Process, so embed each link within the relevant step. (You can find out more about hyperlinking text by clicking the \\&amp;#34;editing toolbar\\&amp;#34; link in the instructions for this section.) 
+
+wq.eval.title=Evaluation:
+wq.eval.instruction=Click in an active cell to insert your own text. Describe to learners how their performance will be evaluated. Specify whether there will be a common grade for group work vs. individual grades, etc.
+wq.eval.content=
+wq.eval.tooltip=If you want to update inactive cell text, you will need to edit this resource after submitting this form.
+
+wq.evaluation.row1.col2_header=Beginning
+wq.evaluation.row1.col3_header=Developing
+wq.evaluation.row1.col4_header=Accomplished
+wq.evaluation.row1.col5_header=Exemplary
+
+wq.evaluation.row2.col2_sample=Description of identifiable performance characteristics reflecting a beginning level of performance.
+wq.evaluation.row2.col3_sample=Description of identifiable performance characteristics reflecting development and movement toward mastery.
+wq.evaluation.row2.col4_sample=Description of identifiable performance characteristics reflecting mastery.
+wq.evaluation.row2.col5_sample=Description of identifiable performance characteristics reflecting the highest level of performance.
+
+
+
+
+
+
+wq.evaluation.row2.col1_sample=Stated Objective or Performance
+wq.evaluation.row3.col1_sample=Stated Objective or Performance
+wq.evaluation.row4.col1_sample=Stated Objective or Performance
+wq.evaluation.row5.col1_sample=Stated Objective or Performance
+
+wq.conclusion.title=Conclusion:
+wq.conclusion.instruction=Enter a few sentences here that summarize what students will have accomplished or learned by completing this activity or lesson. 
+wq.conclusion.content=
+wq.conclusion.tooltip=You might also include some rhetorical questions or additional links to encourage them to extend their thinking into other content beyond this lesson.
+
+wq.cred.title=Credits &amp; References:
+wq.cred.instruction=List here the sources of any images, music, or text that you're using. Provide links back to the original source. Say thanks to anyone who provided resources or help. 
+wq.cred.content=
+wq.cred.tooltip=List any books and other analog media that you used as information sources as well. You can attach a bibliography or other reference file using the Required Attachments section below.
+
+wq.standards.title=Standards:
+wq.standards.instruction=List any standards or benchmarks addressed through use of this WebQuest.
+wq.standards.content=
+wq.standards.tooltip=If you wish to attach a formatted document citing specific standards, use the Required Attachments section below.
+
+wq.required.attachments.title=Required Attachments:
+wq.required.attachments.instruction=Select and upload files from your computer. Attached files cannot exceed 20 MB in total. These will be offered as links in the published lesson plan.
+
+wq.required.attachments.file.attached=Files that you attach to this resource do not appear as independent contributions on Curriki; they are presented only as hyperlinks within this resource, and they are covered by the license for this resource.&lt;br /&gt;&lt;br /&gt;After submitting this form, please consider adding curricular materials to Curriki as standalone resources, so these contributions can be discovered and reused more easily.
+wq.attachments.title=Attached Files:
+wq.required.attachments.tooltip=Attach any files referenced in the lesson, such as a handout, rubric, worksheet, or quiz.
+wq.attachments.browse.button=Browse
+wq.attachments.attach.button=Attach This File
+wq.attachments.delete=Remove
+
+wq.file.size.maximum=20000000
+wq.file.size.label=Total size of all attachments:
+wq.file.size.oversize=Attachments to this resource cannot exceed 20 MB in total. To save this resource, you must use "remove" link in "Required Attachments" to reduce total size of attachments. Please upload any additional files as standalone Curriki contribution instead of attaching it to this resource.
+wq.file.size.dialog=Attachments to this resource cannot exceed 20 MB in total. You may want to upload this file as a standalone Curriki contribution instead of attaching it to this resource.
+ace.lesson.plan.file.size.dialog.button=OK
+
+
+## FROM SCRATCH ERROR MESSAGES (ALSO USED IN OTHER FORMS)
+form.scratch.title.more.250=You entered more than 250 characters into the Title field in Step 1. Please shorten the text in this field.
+form.scratch.required.fields.dialog=Please complete the following required field(s):
+form.scratch.required.fields.dialog.title=- Title
+form.scratch.required.fields.dialog.description=- Description
+form.scratch.required.fields.dialog.subject=- Subject
+form.scratch.required.fields.dialog.level=- Educational Level
+form.scratch.required.fields.dialog.ict=- Instructional Component Type
+form.scratch.required.fields.dialog.content=- Content
+form.scratch.required.fields.dialog.rights=- Rights Holder
+form.scratch.required.fields.dialog.button=OK
+
+## LESSON PLAN ERROR MESSAGES
+
+## This list includes error messages for all lesson plan forms where fields with these titles are used. Some forms may share some titles. Not all fields are in play in all forms. Please see specs for form formats/contents, including outlines of included and required elements, and their titles.
+
+## Standard instruction line at top of error message for lesson plan forms:
+
+lesson.plan.required.fields.dialog=Please complete the following required field(s):
+
+## The following fields are required metadata for all forms.
+
+lesson.plan.required.fields.dialog.title=- Title
+lesson.plan.required.fields.dialog.description=- Description
+lesson.plan.required.fields.dialog.subject=- Subject
+lesson.plan.required.fields.dialog.level=- Educational Level
+lesson.plan.required.fields.dialog.rights=- Rights Holder
+lesson.plan.required.fields.dialog.button=OK
+
+## The following fields are required in specific forms, as per specs.
+
+## CSLP Form
+lesson.plan.title.more.250=You entered more than 250 characters into the Title field in Step 1. Please shorten the text in this field.
+lesson.plan.required.fields.dialog.learning.objectives=- Learning Objectives
+lesson.plan.required.fields.dialog.procedures=- Procedures
+
+## NLLP Form
+nortel.lesson.plan.title.more.250=You entered more than 250 characters into the Title field in Step 1. Please shorten the text in this field.
+lesson.plan.required.fields.dialog.overview=- Overview
+lesson.plan.required.fields.dialog.techinteg=- Technology Integration
+lesson.plan.required.fields.dialog.prereq=- Prerequisite Experience
+lesson.plan.required.fields.dialog.preptime=- Teacher Prep Time
+lesson.plan.required.fields.dialog.timecomplete=- Estimated Time for Completion
+lesson.plan.required.fields.dialog.materials=- Materials
+lesson.plan.required.fields.dialog.project=- Project
+lesson.plan.required.fields.dialog.timemanagement=- Time Management Tips
+lesson.plan.required.fields.dialog.assess=- Assessment
+lesson.plan.required.fields.dialog.engage=- Engage
+lesson.plan.required.fields.dialog.explore=- Explore
+lesson.plan.required.fields.dialog.explain=- Explain
+lesson.plan.required.fields.dialog.elaborate=- Elaborate
+
+lesson.plan.required.fields.dialog.evaluate=- Evaluate
+lesson.plan.required.fields.dialog.extend=- Extend
+
+## ACELP Form
+ace.lesson.plan.title.more.250=You entered more than 250 characters into the Title field in Step 1. Please shorten the text in this field.
+lesson.plan.required.fields.dialog.priorknowledge=- Prior Knowledge
+lesson.plan.required.fields.dialog.numberdays=- Number of Days
+
+lesson.plan.required.fields.dialog.lessonobjective=- Lesson Objective
+lesson.plan.required.fields.dialog.lessonassessment=- Lesson Assessment
+lesson.plan.required.fields.dialog.procedures=- Procedures
+
+## WQ Form
+wq.title.more.250=You entered more than 250 characters into the Title field in Step 1. Please shorten the text in this field.
+wq.required.fields.dialog.introduction=- Introduction
+wq.required.fields.dialog.task=- The Task
+wq.required.fields.dialog.process=- The Process
+wq.required.fields.dialog.evaluation=- Evaluation
+wq.required.fields.dialog.conclusion=- Conclusion
+
+
+
+
+## GLOBAL SET REQUIRED INFORMATION MODULE CONTENT
+
+## TITLE OF THE RESOURCE
+sri.title_title=Title:
+sri.title_txt=If you copied this resource, update this field to indicate how it is different from the original.
+
+##Appears as default text in the text entry box.
+sri.title_content=
+
+sri.title_tooltip=Name for this element, including display in search lists and as a caption for images
+
+## DESCRIPTION
+sri.description_title=Description:
+sri.description_txt=If you copied this resource, update this field to indicate how it is different from the original.
+
+## To be used later when edit is implemented
+
+sri.copy_info_text=If you have copied this resource, update the Title and Description fields to indicate how it is different from the original.
+
+sri.description_tooltip=When people read this description they should know what your resource is. The more detailed the better!
+
+## SUBJECT
+sri.fw_items_title=Subject:
+sri.fw_items_txt=Click arrows to expand or collapse subjects.
+sri.fw_items_tooltip=Topic(s) that apply to your resource
+##Subject tree content can be found below.
+
+## EDUCATIONAL LEVEL
+## DEPRICATED
+sri.educational_level_title=Educational Level:
+sri.educational_level_txt=Select one or more level(s).
+sri.educational_level_content=
+sri.educational_level_tooltip=Level(s) for which your resource is appropriate
+
+## CURRENT
+sri.educational_level2_title=Educational Level:
+sri.educational_level2_txt=Select one or more level(s).
+sri.educational_level2_content=
+sri.educational_level2_tooltip=Level(s) for which your resource is appropriate
+
+## INSTRUCTIONAL COMPONENT TYPE
+sri.instructional_component2_title=Instructional Component Type:
+sri.instructional_component2_txt=Scroll to find the best option. You can select multiple options by hitting the Ctrl (PC) or Apple (Mac) key as you click to select. Click &lt;a href="http://www.curriki.org/xwiki/bin/view/Coll_curriki/InstructionalComponentTypeICT" target="_blank"&gt;here&lt;/a&gt; for definitions.
+sri.instructional_component2_content=
+sri.instructional_component2_tooltip=Type or format of content that best matches your resource
+
+## ICT list is below in Asset Class
+
+## KEY WORDS
+sri.keywords_title=Key Words:
+sri.keywords_txt=
+sri.keywords_content=
+sri.keywords_tooltip=Words to help people find your resource when searching Curriki or the Internet
+
+## LANGUAGE
+sri.language_title=Language:
+sri.language_txt=
+sri.language_content=
+sri.language_tooltip=Select a language for this resource. If you select &amp;#34;Other&amp;#34; please add the language in the Key Words field above. (You may wish to enter it in both the native and English alphabets, if applicable.)
+##Language choices are located below.
+
+## HIDE FROM SEARCH
+sri.hidden_from_search_title=Hide from Search:
+sri.hidden_from_search_txt=Some content is not suitable for display in search results, because it does not offer value to the community as a standalone element.&lt;br /&gt;&lt;br /&gt;If this is such an element (for instance, a table) that only makes sense within the context of a larger resource (like a lesson plan), please click below so this element will not appear in search results.
+sri.hidden_from_search_tooltip=Hides this element so that it will not be returned in search results
+sri.hidden_from_search_after=Do not show this element in search results.
+
+## RIGHT HOLDERS
+sri.right_holder_title=Rights Holder(s):
+sri.right_holder_txt=
+sri.right_holder_content=
+sri.right_holder_tooltip=Copyright holder(s) names for this asset
+
+## ACCESS PRIVELEGES
+sri.rights_title=Access Privileges:
+sri.rights_txt=Select &lt;strong&gt;Private&lt;/strong&gt; to keep your material in "draft" until it is ready to be released&lt;br /&gt;into the repository for general use.
+sri.rights_tooltip=This setting determines who has the rights to view or edit any resource.
+sri.rights_content=
+
+## LICENSE DEED
+
+sri.license_type_title=License Deed:
+
+sri.license_type_txt=Please be sure you have read and understand the &lt;a href="/xwiki/bin/view/Main/TOS?xpage=popup" target="TOS"&gt;Terms of Use&lt;/a&gt; and that you have the rights to contribute this content.&lt;br /&gt;&lt;br /&gt;The Curriki-compatible license provides maximum flexibility to the community, so members can use and modify others&amp;#39; contributions.  The default Curriki license is a widely used Creative Commons license Attribution &lt;a href="http://creativecommons.org/licenses/by/3.0/" target="CC30" onclick="window.open('http://creativecommons.org/licenses/by/3.0/', 'CC30'); return false;"&gt;3.0&lt;/a&gt;.  If you wish to assign another license, please select from the drop-down list below.  To learn about all the Creative Commons licenses, please &lt;a href="http://creativecommons.org/about/licenses/meet-the-licenses" target="CCmeet" onclick="window.open('http://creativecommons.org/about/licenses/meet-the-licenses', 'CCmeet'); return false;"&gt;click here&lt;/a&gt;.
+sri.license_type_heading=Set License Deed:
+
+sri.license_type_tooltip=License protecting this content
+
+sri.license_type_content=
+
+## ASSET CLASS: Derived from the AssetClass
+
+## SUBJECT
+## Moved to GlobalClassTranslation by Todd on 08-05-2008
+
+## EDUCATIONAL LEVEL
+## Moved to GlobalClassTranslation by Todd on 08-05-2008
+
+## ICT
+## Moved to GlobalClassTranslation by Todd on 08-05-2008
+
+## ACCESS RIGHTS
+## Moved to GlobalClassTranslation by Todd on 08-05-2008
+
+## LANGUAGE
+## Moved to GlobalClassTranslation by Todd on 08-05-2008
+
+
+## LICENSES
+## Moved to the GlobalClassTranslation file by Todd Aug-05-2008
+
+
+##
+## ADD PATH SELECTION DIALOGS
+
+##Set Required Information, Part 1
+add.setrequiredinfo.part1.title=Set Required Information, Part 1
+add.setrequiredinfo.part1.guidingquestion=What details will best describe and present this resource in search results and other listings?
+sri.description.empty_msg=
+sri.keywords.empty_msg=
+add.setrequiredinfo.part1.cancel.button=Cancel
+add.setrequiredinfo.part1.next.button=Next &gt;&gt;
+
+
+##Set Required Information, Part 2
+add.setrequiredinfo.part2.title=Set Required Information, Part 2
+add.setrequiredinfo.part2.guidingquestion=Review and update the six fields below as needed.
+add.setrequiredinfo.part2.cancel.button=Cancel
+add.setrequiredinfo.part2.next.button=Next &gt;&gt;
+
+
+##CONTRIBUTE MENU
+add.contributemenu.title_addto_site=Add to Curriki
+add.contributemenu.title_addto_composite=Add to Collection or Folder
+add.contributemenu.guidingquestion_addto_site=What would you like to add?
+
+##Note the dynamic portion of the guiding question below where {0} is the title of the folder or collection to which the member is adding the resource:
+
+add.contributemenu.guidingquestion_addto_composite=What would you like to add to {0}?
+
+add.contributemenu.subtitle_have=Something I already have or know about:
+add.contributemenu.option.file=A file from my computer
+add.contributemenu.option.file_browse_button=Browse
+add.contributemenu.option.video_upload=A video I want to upload
+add.contributemenu.option.link=A link for a great web resource
+add.contributemenu.link.empty_msg=http://
+add.contributemenu.option.repository=A resource I can find by searching Curriki
+add.contributemenu.subtitle_make=Something I want to make on Curriki:
+add.contributemenu.option.template=A resource I&amp;#39;ll create using a template
+add.contributemenu.option.scratch=A resource I&amp;#39;ll create from "scratch"
+add.contributemenu.option.video_capture=A video I&amp;#39;ll capture with my webcam
+add.contributemenu.option.folder=A folder where I&amp;#39;ll organize resources
+
+add.contributemenu.required.fields.dialog_file=Click Browse to select a file from your computer.
+add.contributemenu.required.fields.dialog_video_upload=Select a video to upload. Once uploaded, select Continue to complete the process.
+add.contributemenu.required.fields.dialog_link=Enter the URL for the web resource using the format http://www.website.com, then click Next.
+add.contributemenu.required.fields.dialog_video_capture=Capture a video with your webcam. Once recorded, select Continue to complete the process.
+
+add.contributemenu.cancel.button=Cancel
+add.contributemenu.next.button=Next &gt;&gt;
+
+## SELECT A TEMPLATE DIALOG
+
+add.selecttemplate.title=Select a Template
+add.selecttemplate.guidingquestion=What kind of resource would you like to create?
+
+add.selecttemplate.list1.header=&lt;b&gt;Curriki Standard Lesson Plan&lt;/b&gt;
+add.selecttemplate.list1.description=This Curriki template offers the simplest lesson structure, with Learning Objectives and Procedures as the only required content.
+add.selecttemplate.list1.thumbnail=/xwiki/bin/download/CreateResources/TemplateThumbnails/CurrikiStandardLessonPlanThumb.png
+add.selecttemplate.list1.url=/xwiki/bin/view/CreateResources/CurrikiStandardLessonPlan
+
+add.selecttemplate.list2.header=&lt;b&gt;Nortel LearniT Lesson Plan&lt;/b&gt;
+add.selecttemplate.list2.description=Nortel LearniT provides a project-based, technology-integrated template incorporating experiences that Engage, Explore, Explain, Elaborate, Evaluate, and Extend learning, with the option to include Standards.
+add.selecttemplate.list2.thumbnail=/xwiki/bin/download/CreateResources/TemplateThumbnails/NortelLessonPlanThumb.png
+add.selecttemplate.list2.url=/xwiki/bin/view/CreateResources/NortelLearniTLessonPlan
+
+add.selecttemplate.list3.header=&lt;b&gt;ACE Lesson Plan&lt;/b&gt;
+add.selecttemplate.list3.description=The Alliance for Catholic Education provides a template in which lesson details are formatted in a table showing time, learning task, and methods or procedures.
+add.selecttemplate.list3.thumbnail=/xwiki/bin/download/CreateResources/TemplateThumbnails/ACELessonPlanThumb.png
+add.selecttemplate.list3.url=/xwiki/bin/view/CreateResources/ACELessonPlan
+
+
+add.selecttemplate.list4.header=&lt;b&gt;WebQuest&lt;/b&gt;
+add.selecttemplate.list4.description=This Curriki template offers the structure for creating a student-directed learning activity that requires students to engage with online resources; includes an evaluation rubric.
+add.selecttemplate.list4.thumbnail=/xwiki/bin/download/CreateResources/TemplateThumbnails/WebQuestThumb.png
+add.selecttemplate.list4.url=/xwiki/bin/view/CreateResources/WebQuest
+
+add.selecttemplate.cancel.button=Cancel
+add.selecttemplate.next.button=Next &gt;&gt;
+
+## SELECT A FORMAT DIALOG
+
+add.selectformat.title=Select a Format
+add.selectformat.guidingquestion=What kind of resource would you like to create?
+
+add.selectformat.instruction=If you're not sure, leave "Wiki Resource" selected and click Next.&lt;br&gt;&lt;br&gt;
+
+add.selectformat.list1.header=&lt;b&gt;Wiki Resource&lt;/b&gt;
+add.selectformat.list1.description=No special skills required -- simple "what you see is what you get" format makes creating content easy!
+add.selectformat.list1.thumbnail=/xwiki/bin/download/CreateResources/TemplateThumbnails/WIKIThumb.png
+add.selectformat.list1.url=/xwiki/bin/view/CreateResources/SimpleWikiResource
+
+add.selectformat.list2.header=&lt;b&gt;HTML Resource&lt;/b&gt;
+add.selectformat.list2.description=Use for pasting in existing HTML or formatted text from MS Word
+add.selectformat.list2.thumbnail=/xwiki/bin/download/CreateResources/TemplateThumbnails/HTMLThumb.png
+add.selectformat.list2.url=/xwiki/bin/view/CreateResources/SimpleHTMLResource
+
+add.selectformat.cancel.button=Cancel
+add.selectformat.next.button=Next &gt;&gt;
+
+##CHOOSE A LOCATION DIALOG
+add.chooselocation.title=Choose a Location
+add.chooselocation.guidingquestion=Where do you want to add this?
+add.chooselocation.instruction=Drag the resource and drop it into a collection or folder. If you want to add it to a specific location, first click the arrow to expand that collection and then drag the resource into the correct spot.&lt;br&gt;&lt;br&gt;You can also drag the resource and hover over a folder or collection to open it, then drop the resource to place it.
+add.chooselocation.instruction_short=Click to drag and drop this:
+add.chooselocation.resource_unavailable= -- Resource Unavailable --
+add.chooselocation.cancel.button=Cancel
+add.chooselocation.next.button=Next &gt;&gt;
+
+
+
+
+##ADD PATH FINAL MESSAGE DIALOGS
+
+##DIALOG TITLES
+
+add.finalmessage.title_successful=Successfully Added
+add.finalmessage.title_resource=Resource Added
+add.finalmessage.title_folder=Folder Added
+add.finalmessage.title_collection=Collection Added
+add.finalmessage.title_copied=Resource Copied
+
+##OPERATION SUCCESSFUL MESSAGES
+
+add.finalmessage.text_resource_success=You have successfully contributed a resource. You can now find this resource in My Contributions.
+
+add.finalmessage.text_resource_simple_success=You have successfully contributed a resource.
+
+add.finalmessage.text_collection_success=You have successfully added a new collection.
+
+##Note the dynamic content in the link below where {0} is the file resource from which the copy was made and {1} is the new file resource:
+
+add.finalmessage.text_copy_success=You have successfully copied &lt;strong&gt;{0}&lt;/strong&gt; to create &lt;strong&gt;{1}&lt;/strong&gt; and can now find your version in My Contributions.
+
+##Note the dynamic content in the link below where {0} is the title of the newly added resource and {1} is the title of the folder or collection into which {0} was added:
+
+add.finalmessage.text_addto_success=You have successfully added &lt;strong&gt;{0}&lt;/strong&gt; into &lt;strong&gt;{1}&lt;/strong&gt;.
+
+##Note the dynamic content in the link below where {0} is the title of the newly added folder and {1} is the title of the folder or collection into which {1} was added:
+
+add.finalmessage.text_addto_folder_success=You have successfully added &lt;strong&gt;{0}&lt;/strong&gt; into &lt;strong&gt;{1}&lt;/strong&gt;. You can now add and organize resources in this folder.
+
+add.finalmessage.text_favorites_success=You have successfully added this to My Favorites.
+
+## ADD COLLECTIONS
+
+add.finalmessage.text_collection_success=You have successfully added a new collection.
+
+add.finalmessage.text_collection_tip1=Click "Build Up" by the listing on My Collections to add resources into the collection.
+
+add.finalmessage.text_collection_tip2=
+
+add.finalmessage.text_groupcollection_success=You have successfully added a new group collection.
+
+add.finalmessage.text_groupcollection_tip1=Click "Build Up" by the listing under Group Collections to add resources into the collection.
+
+add.finalmessage.text_groupcollection_tip2=
+
+
+
+
+##FINAL MESSAGE NAVIGATION OPTIONS
+
+add.finalmessage.add.link=Add
+add.finalmessage.favorites.link=Go to My Favorites
+add.finalmessage.contributions.link=Go to My Contributions
+add.finalmessage.collections.link=Go to My Collections
+
+add.finalmessage.view.link=View
+
+##Note the dynamic content in the link below where {0} is the title of the folder or collection to which the member has just added the resource:
+
+
+add.finalmessage.viewtarget.link=View {0}
+add.finalmessage.continue.link=Continue &gt;&gt;
+add.finalmessage.openbuilder.link=
+add.finalmessage.close.button=Close
+
+##ADD PATH ERROR MESSAGES
+add.servertimedout.message.title=Server Error
+add.servertimedout.message.text=There was a problem accessing the server. Please try again.
+add.servertimedout.message.button=OK
+{/pre}
+</content></xwikidoc>

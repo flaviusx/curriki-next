@@ -1,0 +1,95 @@
+#**
+ * Document history table
+ *
+ * Displays a paged list of document versions, with the possiblity to view a version, compare two
+ * versions, delete one or a range of versions, restore a version as the current document.
+ *
+ *
+ * Settings, compute what versions should be displayed.
+ *#
+#set($minorVersions = (!$xwiki.hasMinorEdit()) || ("$!request.showminor" != "false"))
+## Revision criteria. The following requests for all versions, filtered by the minorVersions option.
+  #set($criteria = $xwiki.criteriaService.revisionCriteriaFactory.createRevisionCriteria("", $minorVersions))
+#set($totalVersions = $tdoc.getRevisions($criteria).size())
+## This will fill in $startAt, $endAt and the variables needed later by #printPagedViewLinks
+  #preparePagedViewParams($totalVersions, $xwiki.getXWikiPreferenceAsInt("web_history_versionsPerPage", 50))
+## Since we're displaying revisions starting from the last one, we need to mirror the range inside
+## the total versions range.
+  #set($startAt = $totalVersions - $startAt)
+#set($endAt = 0 - $itemsPerPage)
+#set($range = $xwiki.criteriaService.rangeFactory.createRange($startAt, $endAt))
+## Reuse the old object, just add the range.
+  $criteria.setRange($range)
+#if ($tdoc.realLanguage!="")
+#set($lang = "&amp;language=${tdoc.realLanguage}")
+#else
+#set($lang = "")
+#end
+<form id="history" action="$doc.getURL("view", "viewer=changes&amp;$docvariant")" method="post">
+    #set($historyurl = $util.encodeURI($doc.getURL("view", "viewer=history&amp;$docvariant")))
+    <fieldset>
+        #set($formname="history")
+      <table class="xwikidatatable">
+        ## Print the table header
+        <tr>
+        #if ($totalVersions > 1)
+        <th class="revision-col-from">$msg.get("rve.information.revision.list.from_title")</th>
+        <th>$msg.get("rve.information.revision.list.to_title")</th>
+        #end
+        <th class="revision-col-to">$msg.get("rve.information.revision.list.version_title")</th>
+        <th class="revision-col-author">$msg.get("rve.information.revision.list.author_title")</th>
+          ## Might be disabled in certain wikis.
+   ##if($xwiki.hasEditComment())
+        <th class="revision-col-note">$msg.get("rve.information.revision.list.note_title")</th>
+   ##end
+        <th class="revision-col-date">$msg.get("rve.information.revision.list.datetime_title")</th>
+        ## Editors see the Revert button.
+  #if($hasEdit && !$hasAdmin)
+        <th class="revision-col-action">$msg.get("rve.information.revision.list.action_title")</th>
+        ## Admins see the Revert and Delete buttons.
+  #elseif($hasAdmin)
+        <th class="revision-col-action" colspan="2">$msg.get("rve.information.revision.list.action_title")</th>
+        #end
+    </tr>
+        ##
+## Display, loop over the extracted revisions and print them in the table.
+##
+  #foreach ($version in $util.reverseList($tdoc.getRevisions($criteria)))
+        #set($revinfo = $tdoc.getRevisionInfo($version))
+        <tr class="row  #* #if($velocityCount % 2 == 0) even #else odd #end *#">
+            #if ($totalVersions > 1)
+            <td class="revision-col-from"><input type="radio" name="rev1" value="$version" #if ($velocityCount==2) checked="checked" #end/></td>
+            <td class="revision-col-to"><input type="radio" name="rev2" value="$version" #if ($velocityCount==1) checked="checked" #end/></td>
+            #end
+            <td class="revision-col-version">
+            #if(($asset.category=="collection")||(!$doc.hasAccessLevel("edit")))
+                $version
+            #else
+                <a href="$doc.getURL("viewrev","rev=${version}&viewer=viewrev")" target="_blank">$version</a>
+            #end
+            </td>
+            <td class="revision-col-author">$xwiki.getLocalUserName($revinfo.author)</td>
+    ##if($xwiki.hasEditComment())
+            #set($note = $!revinfo.comment)
+            #if($note == "")
+             #set($note = "curriki.comment.no.note")
+            #end
+            <td class="revision-col-note">$msg.get($note)</td>
+    ##end
+            <td class="revision-col-date">$xwiki.formatDate($revinfo.date, $msg.get("mycurriki.datetimeFormat"))</td>
+            #if($hasEdit || $hasAdmin)
+            #set($rollbackMessage = $msg.get("rve.information.rollback.confirm.message", ["$!version"]))
+            <td class="revision-col-action" ><button class="button button-confirm" onclick="if (confirm('$xwiki.curriki.escapeForJS($rollbackMessage)')){ location = '$tdoc.getURL("rollback","rev=${version}${lang}&amp;confirm=1&amp;xredirect=${historyurl}")';} return false;">$msg.get("rve.information.revision.list.rollback_button")</button></td>
+            #end
+        </tr>
+        #end ## foreach
+      </table>
+    </fieldset>
+    <fieldset class="buttons">
+        ## Print the page navigation links, if needed.
+            #printPagedViewLinks($itemsPerPage $totalPages $currentPageNumber "viewer=history&amp;showminor=${minorVersions}" false)
+        #if ($totalVersions > 1)
+        <input class="button button-confirm" type="submit" accesskey="c" value="$msg.get("rve.information.revision.list.compare_button")" />
+        #end
+    </fieldset>
+    </form>

@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xwikidoc>
+<web>Admin</web>
+<name>ImportExport</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.LudovicDubost</creator>
+<author>XWiki.dward</author>
+<customClass></customClass>
+<contentAuthor>XWiki.dward</contentAuthor>
+<creationDate>1157143335000</creationDate>
+<date>1203116892000</date>
+<contentUpdateDate>1203116887000</contentUpdateDate>
+<version>1.25</version>
+<title></title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<syntaxId>xwiki/1.0</syntaxId>
+<object>
+<class>
+<name>XWiki.TagClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<tags>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>1</multiSelect>
+<name>tags</name>
+<number>1</number>
+<prettyName>Tags</prettyName>
+<relationalStorage>1</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<values></values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</tags>
+</class>
+<name>Admin.ImportExport</name>
+<number>0</number>
+<className>XWiki.TagClass</className>
+<property>
+<tags/>
+</property>
+</object>
+<content>#set($action = $request.action)
+#if ($action == "getdocs")
+$response.setContentType("text/xml")
+#set($space = $request.spacename)
+&lt;response&gt;
+  #set($docs = $xwiki.searchDocuments("where doc.web='$request.spacename' order by doc.date desc"))
+  #foreach ($docname in $docs)
+#if(!$xwiki.getDocument($docname).getObject("XWiki.XWikiUsers"))
+    &lt;value&gt;$xwiki.getXMLEncoded("${docname}")&lt;/value&gt;
+#end
+  #end
+&lt;/response&gt;
+#elseif ($action == "getPackageList")
+  $response.setContentType("text/xml")
+  #set($alist = $doc.getAttachmentList())
+&lt;response&gt;
+  #foreach ($oAttach in $alist)
+    ##set($import = $xwiki.package)
+    &lt;value&gt;$oAttach.getFilename()&lt;/value&gt;
+    ##$import.Import($oAttach.getContent())
+  #end
+&lt;/response&gt;
+#elseif ($action == "getPackageInfos")
+{pre}$response.setContentType("text/xml")
+#set($packFile = $doc.getAttachment($request.packageName))
+#set($import = $xwiki.package)
+$import.Import($packFile.getContent())
+$import.toXml(){/pre}
+#elseif ($action == "import")
+  #set($toImport = $request.getParameterValues("toImport"))
+  #set($packFile = $doc.getAttachment($request.packageName))
+  #set($import = $xwiki.package)
+  $import.Import($packFile.getContent())
+  #foreach ($itemexp in $toImport)
+    #set($defaultAction = $request.get("action_${itemexp}"))
+    $import.setDocumentAction($itemexp, $xwiki.parseInt($defaultAction))
+  #end
+  $import.install()
+&lt;h3 class="heading-1-1"&gt;$msg.get("import")&lt;/h3&gt;
+#macro(showfilelist $list $text)
+#if($list.size()&gt;0)
+&lt;h4 class="heading-1-1-1"&gt;$msg.get("import_listof${text}files")&lt;/h4&gt;
+&lt;ul&gt;
+#foreach($item in $list)
+&lt;li&gt;$item&lt;/li&gt;
+#end
+&lt;/ul&gt;
+#end
+#end
+$msg.get("importing") $!request.packageName: $msg.get("import_install_${xwiki.package.status}")
+&lt;br/&gt;
+&lt;ul&gt;
+&lt;li&gt;$xwiki.package.installed.size() $msg.get("import_documentinstalled")
+&lt;li&gt;$xwiki.package.skipped.size() $msg.get("import_documentskipped")
+&lt;li&gt;$xwiki.package.errors.size() $msg.get("import_documenterrors")
+&lt;/ul&gt;
+#showfilelist($xwiki.package.installed "installed")
+#showfilelist($xwiki.package.skipped "skipped")
+#showfilelist($xwiki.package.errors "errors")
+#elseif ($action == "export")
+  #set($ToExport = $request.getParameterValues("toExport"))
+  #set($withHistory = $request.withHistory)
+  #set($author = $request.author)
+  #set($description = $request.description)
+  #set($licence = $request.licence)
+  #set($version = $request.version)
+  #set($packageName = $request.packageName)
+
+  #set($export = $xwiki.package)
+
+  #if ($withHistory=="true")
+    $export.setWithVersions(true)
+  #else
+    $export.setWithVersions(false)
+  #end
+  #if ($author)
+    $export.setAuthorName($author)
+  #end
+  #if ($description)
+    $export.setDescription($description)
+  #end
+
+  #if ($licence)
+    $export.setLicence($licence)
+  #end
+
+  #if ($version)
+    $export.setVersion($version)
+  #end
+
+  $export.setName($packageName)
+  #foreach ($itemexp in $ToExport)
+    #set($defaultAction = $request.get("action_${itemexp}"))
+    $export.add($itemexp, $xwiki.parseInt($defaultAction))
+  #end
+  $export.export()
+#else
+1 Import / Export
+&lt;center&gt;
+[Export&gt;$doc.fullName] - [Import&gt;$doc.fullName?action=showImport]
+&lt;/center&gt;
+
+{pre}
+&lt;style type="text/css"&gt;
+  .td-docSelectorColumn {width:50%;padding:3px;background:#ccc;vertical-align:top; border-right: 2px solid #0063dc;}
+  .td-selectedColumn {width:50%;padding:3px;background:#999;vertical-align:top;}
+.Exportlink {
+	color: #0063dc;
+        text-decoration: none;
+        cursor: pointer;
+}
+
+.Exportlink:hover {
+    text-decoration: none;
+    color: #ff0084;
+}
+
+.Exportlink:active {
+        text-decoration: none;
+        color: #ff0084;
+}
+.action{
+        color: rgb(0, 104, 28);
+        font-weight: bold;
+}
+&lt;/style&gt;
+&lt;div id="exportApp"&gt;
+&lt;div id="formSend" style="display:none;"&gt;&lt;/div&gt;
+&lt;table style="width:100%; border-color:blue; border-spacing: 0; " border="0"&gt;
+&lt;tr&gt;
+&lt;td class="td-docSelectorColumn"&gt;&lt;h3 style="text-align:center;" id="firstColumnTitle"&gt;Your Wiki&lt;/h3&gt;
+&lt;span id="spaceSelectorEl"&gt;  Select a Space: 
+  #set($spaces = $xwiki.getSpaces())
+  &lt;select name="spaceSelector" id="spaceSelector"&gt;
+  &lt;option value="---"&gt;---&lt;/option&gt;
+  #foreach ($space in $spaces)
+    &lt;option value="$space"&gt;$space&lt;/option&gt;
+  #end
+  &lt;/select&gt;&lt;br /&gt;
+&lt;span class="selectDocsActions"&gt;Select &lt;a onclick="selectItems('checkedDoc', false);" class="Exportlink"&gt;none&lt;/a&gt;, &lt;a onclick="selectItems('checkedDoc', true);" class="Exportlink"&gt;all&lt;/a&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;/td&gt;
+&lt;td class="td-selectedColumn"&gt;&lt;h3 style="text-align:center;" id="secondColumnTitle"&gt;Your Package&lt;/h3&gt;
+  &lt;select name="actionSelector" id="actionSelector"&gt;
+  &lt;option style="color: rgb(119, 119, 119);"&gt;More Actions&lt;/option&gt;
+  &lt;option value="delete"&gt;Delete&lt;/option&gt;
+  &lt;option id="al" disabled="disabled" style="color: rgb(119, 119, 119);"&gt;Action if exist:&lt;/option&gt;
+  &lt;option value="skip"&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;Skip&lt;/option&gt;
+  &lt;option value="overwrite"&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;Overwrite&lt;/option&gt;
+  &lt;/select&gt;&lt;br /&gt;
+&lt;span class="selectDocsActions"&gt;Select &lt;a onclick="selectItems('selCheckedDoc', false);" class="Exportlink"&gt;none&lt;/a&gt;, &lt;a onclick="selectItems('selCheckedDoc', true);" class="Exportlink"&gt;all&lt;/a&gt;&lt;/span&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;
+&lt;td class="td-docSelectorColumn"&gt;
+&lt;div id="docSelectorColumn"&gt;
+  &lt;span id="noSelectedSpace"&gt;&lt;br /&gt;&lt;h3&gt;Select a space first&lt;/h3&gt;&lt;/span&gt;
+  &lt;div id="spaceDocs"&gt;
+  
+
+
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/td&gt;&lt;td class="td-selectedColumn"&gt;
+&lt;div id="selectedColumn"&gt;
+&lt;b&gt;documents:&lt;/b&gt;
+  &lt;span id="noSelectedDocs"&gt;&lt;br /&gt;&lt;h3 id="noSelectedDocsTxt"&gt;No selected documents to export&lt;/h3&gt;&lt;/span&gt;
+  &lt;table id="selectedDocs"&gt;
+
+  &lt;/table&gt;
+
+&lt;/div&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td class="td-docSelectorColumn" style="text-align:right;"&gt;&lt;input type="button" onclick="addDocs();" id="bttAdd" value="Add to my package &amp;gt;&amp;gt;"/&gt;&lt;/td&gt;
+&lt;td class="td-selectedColumn" style="text-align:left;"&gt;
+&lt;h3&gt;Infos&lt;/h3&gt;
+&lt;label for="appName"&gt;&lt;i&gt;Package Name&lt;/i&gt;&lt;/label&gt;&lt;br /&gt;&lt;input type="text" name="appName" id="appName" value="package"&gt;&lt;br /&gt;&lt;br /&gt;
+&lt;label for="appDesc"&gt;&lt;i&gt;Description&lt;/i&gt;&lt;/label&gt;&lt;br /&gt;&lt;textarea name="appDesc" id="appDesc"&gt;&lt;/textarea&gt;&lt;br /&gt;&lt;br /&gt;
+&lt;label for="appLicence"&gt;&lt;i&gt;Licence&lt;/i&gt;&lt;/label&gt;&lt;br /&gt;&lt;input type="text" name="appLicence" id="appLicence" value="LGPL"&gt;&lt;br /&gt;&lt;br /&gt;
+&lt;label for="appAuthor"&gt;&lt;i&gt;Author&lt;/i&gt;&lt;/label&gt;&lt;br /&gt;&lt;input type="text" name="appAuthor" id="appAuthor" value="$context.user"&gt;&lt;br /&gt;&lt;br /&gt;
+&lt;label for="appVersion"&gt;&lt;i&gt;Version&lt;/i&gt;&lt;/label&gt;&lt;br /&gt;&lt;input type="text" name="appVersion" id="appVersion" value=""&gt;&lt;br /&gt;&lt;br /&gt;
+&lt;span id="historyEls"&gt;&lt;label for="appWithHistory"&gt;&lt;i&gt;Add history&lt;/i&gt;&lt;input type="checkbox" name="appWithHistory" id="appWithHistory" value="true"&gt;&lt;/label&gt;&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;
+&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class="td-docSelectorColumn" style="text-align:right;"&gt;&lt;/td&gt;
+&lt;td class="td-selectedColumn" style="text-align:right;"&gt;&lt;input type="button" id="bttExport" onclick="bttExport()" value="Export" style=""/&gt;&lt;/td&gt;&lt;/tr&gt;
+
+&lt;/table&gt;
+
+&lt;/div&gt;
+&lt;script type="text/javascript" src="/xwiki/skins/xwiki10/prototype.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/xwiki/xwiki.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+	//declaring the class
+	var SelectWatcher = Class.create();
+
+	//defining the rest of the class implmentation
+	SelectWatcher.prototype = {
+
+	   initialize: function(selBox, callBack) {
+			this.selBox = $(selBox);
+			//assigning our method to the event
+			this.selBox.onchange = callBack.bindAsEventListener(this);
+	   }
+
+	};
+        var watcher = new SelectWatcher("spaceSelector", selectOptionCallBack);
+
+        var watcher2 = new SelectWatcher("actionSelector", selectActionCallBack);
+
+       function selectOptionCallBack(evt)
+       {
+         var pars = "action=getdocs&amp;spacename="+this.selBox.options[this.selBox.selectedIndex].value+"&amp;xpage=rdf";
+         var myAjax = new Ajax.XWikiRequest( "$doc.web", "$doc.name", {method: 'get', parameters: pars, onComplete: showDocs} );
+       }
+      
+       function selectActionCallBack(evt)
+       {
+          if (this.selBox.options[this.selBox.selectedIndex].value == "skip")
+            setDocsAction("skip");
+          else
+            if (this.selBox.options[this.selBox.selectedIndex].value == "overwrite")
+              setDocsAction("overwrite");
+            else
+              if (this.selBox.options[this.selBox.selectedIndex].value == "delete")
+                deleteDocs(false);
+         this.selBox.selectedIndex = 0;
+       }
+
+      function showDocs(res)
+      {
+        var tableName = "listTable";
+        var tableEl = $(tableName);
+        if (tableEl)
+          Element.remove(tableName);
+        createTable(tableName, "spaceDocs");
+        var xml = res.responseXML;
+        var docNodes = xml.getElementsByTagName("value");
+        Element.hide("noSelectedSpace");
+        for (var i = 0; i &lt; docNodes.length; i++)
+        {
+          // alert("insertTableRow(" + tableName + ", " + docNodes[i].firstChild.data + ", 'doc');");
+          insertTableRow(tableName, docNodes[i].firstChild.data, "doc");
+        }
+      }
+
+       function showImportList()
+       {
+         var pars = "action=getPackageList&amp;xpage=rdf";
+         var myAjax = new Ajax.XWikiRequest( "$doc.web", "$doc.name", {method: 'get', parameters: pars, onComplete: showPackageList} );
+       }
+
+      function showPackageList(res)
+      {
+        var tableName = "listTable";
+        var tableEl = $(tableName);
+        if (tableEl)
+          Element.remove(tableName);
+        createTable(tableName, "spaceDocs");
+        var xml = res.responseXML;
+        var packageNodes = xml.getElementsByTagName("value");
+        for (var i = 0; i &lt; packageNodes.length; i++)
+        {
+          insertTableRow(tableName, packageNodes[i].firstChild.data, "pack");
+        }
+      }
+
+
+      function createTable(id, parent){
+         $(parent).innerHTML = "&lt;table id=" + id + "&gt;&lt;/table&gt;";
+      }
+
+      function insertTableRow(id, name, type){
+         if (type == "doc")
+           new Insertion.Before(id, "&lt;tr&gt;&lt;td&gt;" + name + "&lt;/td&gt;&lt;td&gt;&lt;input type='checkbox' value='"+name+"' id='check_" + name + "' class='checkedDoc'/&gt;&lt;/td&gt;&lt;/tr&gt;");
+         else if (type == "pack")
+           new Insertion.Before(id, "&lt;tr&gt;&lt;td&gt;&lt;a onclick='selectPackage(\""+ name +"\")' class='Exportlink'&gt;" + name + "&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;");
+      }
+
+      function insertNewSelectedDoc(id, value)
+      {
+         insertNewDoc(id, value, 0)
+      }
+
+      function insertNewDoc(id, value, action)
+      {
+         var sAction = actionToString(action);
+         new Insertion.Bottom(id, "&lt;tr id='tr_" + value + "'&gt;&lt;td&gt;&lt;input type='checkBox' value='" + value + "' class='selCheckedDoc' id='sel_" + value + "' /&gt;&lt;span id='" + value + "' class='exportDocName'&gt;" + value + "&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span id='action_" + value + "' class='action'&gt;" + sAction + "&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;");
+      }
+
+      function actionToString(actionId)
+      {
+         if (actionId == "0")
+           return "overwrite";
+         else
+           return "skip";
+      }
+
+      function actionToInt(action)
+      {
+         if (action == "overwrite")
+           return 0;
+         else
+           return 1;
+      }
+
+
+      function setDocsAction(action)
+      {
+        var docs = document.getElementsByClassName("exportDocName");
+         var i;
+         for (i = 0; i &lt; docs.length; i++)
+         {
+             var doc = docs[i];
+             if ($('sel_' + doc.innerHTML).checked)
+               $('action_' + doc.innerHTML).innerHTML = action;
+         }
+      }
+
+   /*   function deleteDocs()
+      {
+        var docs = document.getElementsByClassName("exportDocName");
+         var i;
+         for (i = 0; i &lt; docs.length; i++)
+         {
+             var doc = docs[i];
+             if ($('sel_' + doc.innerHTML).checked)
+               Element.remove('tr_' + doc.innerHTML);
+         }
+      }*/
+
+      function deleteDocs(force)
+      {
+        var docs = document.getElementsByClassName("exportDocName");
+         var i;
+         for (i = 0; i &lt; docs.length; i++)
+         {
+             var doc = docs[i];
+             if ($('sel_' + doc.innerHTML).checked || force)
+               Element.remove('tr_' + doc.innerHTML);
+         }
+      }
+
+
+      function addDocs()
+      {
+         //var destEl = $("selectedDocs");
+         var docs = document.getElementsByClassName("checkedDoc");
+         Element.hide("noSelectedDocs");
+         var i;
+         for (i = 0; i &lt; docs.length; i++)
+           {
+             var doc = docs[i];
+             if (doc.checked == true)
+              insertNewSelectedDoc("selectedDocs", doc.value)
+           }
+      }
+
+      function bttExport()
+      {
+         var docs = document.getElementsByClassName("exportDocName");
+         var i;  // &lt;input type='hidden' name='' value=''&gt;
+         var form = "&lt;form action='$doc.getURL()' id='form' method='POST'&gt;";
+         form += "&lt;input type='hidden' name='action' value='export'&gt;";
+         form += "&lt;input type='hidden' name='withHistory' value='" + $F("appWithHistory") + "'&gt;";
+         form += "&lt;input type='hidden' name='author' value='" + $F("appAuthor") + "'&gt;";
+         form += "&lt;input type='hidden' name='description' value='" + $F("appDesc") + "'&gt;";
+         form += "&lt;input type='hidden' name='licence' value='" + $F("appLicence") + "'&gt;";
+         form += "&lt;input type='hidden' name='packageName' value='" + $F("appName") + "'&gt;";
+
+//form += "&lt;input type='hidden' name='' value=''&gt;";
+
+         for (i = 0; i &lt; docs.length; i++)
+         {
+             var docname = docs[i].innerHTML;
+             var action = actionToInt($("action_" + docname).innerHTML);
+             form += "&lt;input type='hidden' name='toExport' value='" + docname + "'&gt;";
+             form += "&lt;input type='hidden' name='action_" + docname + "' value='" + action + "'&gt;";
+         }
+         $('formSend').innerHTML = form;
+         $('form').submit();
+      }
+
+
+      function bttImport()
+      {
+         var docs = document.getElementsByClassName("exportDocName");
+         var i;
+//         var url = "?action=import&amp;packageName=" + $("SelectedPackageName").innerHTML;
+         var form = "&lt;form action='$doc.getURL()' id='form' method='POST'&gt;";
+         form += "&lt;input type='hidden' name='action' value='import'&gt;";
+         form += "&lt;input type='hidden' name='packageName' value='" + $("SelectedPackageName").innerHTML + "'&gt;";
+
+         for (i = 0; i &lt; docs.length; i++)
+         {
+             var docname = docs[i].innerHTML;
+             var action = actionToInt($("action_" + docname).innerHTML);
+             form += "&lt;input type='hidden' name='toImport' value='" + docname + "'&gt;";
+             form += "&lt;input type='hidden' name='action_" + docname + "' value='" + action + "'&gt;";
+         }
+         $('formSend').innerHTML = form;
+         $('form').submit();
+      }
+
+
+      function bttImport2()
+      {
+         var docs = document.getElementsByClassName("exportDocName");
+         var i;
+         var url = "?action=import&amp;packageName=" + $("SelectedPackageName").innerHTML;
+         for (i = 0; i &lt; docs.length; i++)
+         {
+             var docname = docs[i].innerHTML;
+             var action = actionToInt($("action_" + docname).innerHTML);
+             url = url + "&amp;toImport=" + docname + "&amp;action_" + docname + "=" + action;
+         }
+         
+         window.location=url;
+      }
+
+      function selectItems(classId, selected)
+      {
+         var docs = document.getElementsByClassName(classId);
+         var i;
+         for (i = 0; i &lt; docs.length; i++)
+           {
+             var doc = docs[i];
+             doc.checked = selected;
+           }
+      }
+
+      function changeToImport()
+      {
+        $("firstColumnTitle").innerHTML = "select or upload a package";
+        $("noSelectedDocsTxt").innerHTML = "no selected package to import";
+        $("bttExport").value = "Import";
+        $("bttExport").onclick = bttImport;
+        Element.hide("bttAdd");
+        Element.hide("noSelectedSpace");
+        Element.hide("historyEls");
+        showImportList();
+        Element.hide("spaceSelectorEl");
+      }
+
+      function selectPackage(name)
+      {
+         var pars = "action=getPackageInfos&amp;packageName="+name+"&amp;xpage=plain";
+         $("secondColumnTitle").innerHTML = "package: &lt;span id='SelectedPackageName'&gt;" + name + "&lt;/span&gt;";
+         var myAjax = new Ajax.XWikiRequest( "$doc.web", "$doc.name", {method: 'get', parameters: pars, onComplete: showPackageInfos} );
+      }
+
+      function getXmlValue(tag, xml)
+      {
+        var nodes = xml.getElementsByTagName(tag);
+        if (nodes.length &gt; 0 &amp;&amp; nodes[0].firstChild)
+          return nodes[0].firstChild.data;
+        else
+          return "";
+      }
+
+      function showPackageInfos(res)
+      {
+        var xml = res.responseXML;
+
+        var name = getXmlValue("name", xml);
+        var licence = getXmlValue("licence", xml);
+        var description = getXmlValue("description", xml);
+        var author = getXmlValue("author", xml);
+        var version = getXmlValue("version", xml);
+
+        $("appName").value = name;
+        $("appDesc").value = description;
+        $("appAuthor").value = author;
+        $("appVersion").value = version;
+        $("appLicence").value = licence;
+
+        deleteDocs(true);
+
+        var nodes = xml.getElementsByTagName("file");
+        for (var i = 0; i &lt; nodes.length; i++)
+        {
+          var doc = nodes[i];
+          insertNewDoc("selectedDocs", doc.firstChild.data, doc.getAttribute("defaultAction"));
+        }
+
+        Element.hide("noSelectedDocs");
+      }
+
+      #if ($request.action == "showImport")
+        changeToImport();
+      #end
+&lt;/script&gt;
+{/pre}
+#end</content>
+</xwikidoc>

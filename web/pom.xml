@@ -1,0 +1,770 @@
+<!--
+ *
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ *
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.curriki</groupId>
+    <artifactId>curriki-parent</artifactId>
+    <version>2.1</version>
+  </parent>
+  <artifactId>curriki-web</artifactId>
+  <name>XWiki Products - Curriki - Web</name>
+  <packaging>war</packaging>
+  <description>The standard Curriki WAR</description>
+  <dependencies>
+    <!-- Depend on the platform WAR to get all web resources. We then need to add all libraries we need for Curriki. -->
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-web</artifactId>
+      <version>${platform.version}</version>
+      <type>war</type>
+    </dependency>
+    <!-- Watchlist -->
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-watchlist-api</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <!-- Logging Dependencies. Ensures all logging goes through SLF4J and Logback. -->
+    <!--
+    <dependency>
+      <groupId>org.xwiki.commons</groupId>
+      <artifactId>xwiki-commons-logging-logback</artifactId>
+      <version>${commons.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>jcl-over-slf4j</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>log4j-over-slf4j</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    -->
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-jodatime</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- Search -->
+    <!-- 
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-search-lucene</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    -->
+    <!-- Scheduler -->
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-scheduler-api</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- Mailsender -->
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-mailsender</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>  
+    <!-- Tags -->
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-tag-api</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- Captcha component -->
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-captcha</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- Crypto Module -->
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-crypto</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- CSRF protection -->
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-csrf</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- Legacy / Backward compatibility -->
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-legacy</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- XML Script Service -->
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-xml-script</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- Filesystem attachment storage -->
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-store-filesystem-attachments</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- Activity Stream -->
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-activitystream</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- Event & Message Stream Modules -->
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-eventstream</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-messagestream</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- Annotations modules -->
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-annotation-core</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-annotation-reference</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-annotation-io</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-annotation-maintainer</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-annotation-rest</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-annotation-scripting</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- Dependencies we need inside the XE WAR -->
+    <!-- Old Core -->
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-oldcore</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>javax.servlet</groupId>
+          <artifactId>servlet-api</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <!-- Add the GWT JAR so that the XWiki GWT Servlet can be activated by default in web.xml -->
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-gwt-api</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-wysiwyg-war</artifactId>
+      <version>${platform.version}</version>
+      <type>war</type>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- WebDAV module -->
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-webdav-server</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- REST module -->
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-rest-server</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- Extension Manager -->
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-extension-handler-jar</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>javax.servlet</groupId>
+          <artifactId>servlet-api</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-extension-handler-xar</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-extension-script</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-extension-repository-aether</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-extension-repository-xwiki-client</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- Default Rendering Macros we want available by default in XE.
+         Please keep them in alphabetical order -->
+    <dependency>
+       <groupId>org.xwiki.rendering</groupId>
+       <artifactId>xwiki-rendering-macro-box</artifactId>
+       <version>${rendering.version}</version>
+       <scope>runtime</scope>
+     </dependency>
+    <dependency>
+      <groupId>org.xwiki.rendering</groupId>
+      <artifactId>xwiki-rendering-macro-footnotes</artifactId>
+      <version>${rendering.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.rendering</groupId>
+      <artifactId>xwiki-rendering-macro-html</artifactId>
+      <version>${rendering.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.rendering</groupId>
+      <artifactId>xwiki-rendering-macro-id</artifactId>
+      <version>${rendering.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.rendering</groupId>
+      <artifactId>xwiki-rendering-macro-message</artifactId>
+      <version>${rendering.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.rendering</groupId>
+      <artifactId>xwiki-rendering-macro-toc</artifactId>
+      <version>${rendering.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- Default Platform Macros we want available by default in XE.
+Please keep them in alphabetical order -->
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-chart-macro</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-formula-macro</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-rendering-macro-cache</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-rendering-macro-code</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-rendering-macro-container</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-rendering-macro-dashboard</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-rendering-macro-gallery</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-rendering-macro-groovy</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-rendering-macro-include</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-rendering-macro-python</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-rendering-macro-rss</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-rendering-macro-useravatar</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-rendering-macro-velocity</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- XWiki Rendering Syntax Parsers -->
+    <dependency>
+      <groupId>org.xwiki.rendering</groupId>
+      <artifactId>xwiki-rendering-syntax-doxia</artifactId>
+      <version>${rendering.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.rendering</groupId>
+      <artifactId>xwiki-rendering-syntax-xwiki2</artifactId>
+      <version>${rendering.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.rendering</groupId>
+      <artifactId>xwiki-rendering-syntax-xhtml</artifactId>
+      <version>${rendering.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.rendering</groupId>
+      <artifactId>xwiki-rendering-syntax-xwiki10</artifactId>
+      <version>${rendering.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- Office -->
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-office-viewer</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-office-macro</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- Skin Extension -->
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-skin-skinx</artifactId>
+      <version>${platform.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- Skins
+         Note: even though the dependency plugin below doesn't need explicit dependencies set to work it's a best
+         practice to put them here since they are real dependencies -->
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-albatross</artifactId>
+      <version>${platform.version}</version>
+      <type>zip</type>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-colibri</artifactId>
+      <version>${platform.version}</version>
+      <type>zip</type>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.platform</groupId>
+      <artifactId>xwiki-platform-toucan</artifactId>
+      <version>${platform.version}</version>
+      <type>zip</type>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.curriki</groupId>
+      <artifactId>curriki-plugin-lucene</artifactId>
+      <version>${curriki.version}</version>
+    </dependency>
+    <!-- We shouldn't need this dependency but Surefire plugin v2.3 fails with a "Null" if it's
+         not defined. Seems to be fixed in the latest Surefire plugin in Maven's trunk so when
+         2.3.1 or 2.4 is out, switch to it and remove this dependency. -->
+    <!--
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.2</version>
+      <scope>test</scope>
+    </dependency>
+    -->
+    <dependency>
+	    <groupId>org.curriki</groupId>
+	    <artifactId>curriki-plugin-spacemanager</artifactId>
+	    <version>${curriki.version}</version>
+    </dependency>
+    <dependency>
+	    <groupId>com.xpn.xwiki.platform.plugins</groupId>
+	    <artifactId>xwiki-plugin-invitationmanager</artifactId>
+  	  <version>${platform.plugins.invitationmanager.version}</version>
+    </dependency>    
+    <dependency>
+  	  <groupId>org.curriki</groupId>
+	    <artifactId>curriki-plugin-activitystream</artifactId>
+	    <version>${curriki.version}</version>
+    </dependency>    
+    <dependency>
+	    <groupId>org.curriki</groupId>
+	    <artifactId>curriki-plugin-curriki</artifactId>
+	    <version>${curriki.version}</version>
+    </dependency>
+    <dependency>
+	    <groupId>org.curriki</groupId>
+	    <artifactId>curriki-plugin-servlet</artifactId>
+	    <version>${curriki.version}</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <!-- Inject XWiki's configuration (only xwiki.cfg, not hibernate.cfg.xml) -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-remote-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>xwiki-configuration-resources</id>
+            <!-- The remote resources plugin adds its output directory as a resource directory
+                 so that the Maven resources plugin copies these resources to target/classes.
+                 However copying them to target/classes will make them appear in WEB-INF/classes
+                 in the generated WAR since the WAR plugin copies resources in target/classes in
+                 WEB-INF/classes. Thus to prevent this we're binding this execution to a phase
+                 that comes after the execution of the resources plugin (which executes in the
+                 process-resources phase). Thus this remote resources plugin will execute just
+                 after the resources plugin and the resources won't be copied, which is why we're
+                 adding a webResource configuration element below in the WAR plugin's
+                 configuration. -->
+            <phase>process-resources</phase>
+            <goals>
+              <goal>process</goal>
+            </goals>
+            <configuration>
+              <resourceBundles>
+                <resourceBundle>org.xwiki.platform:xwiki-platform-tool-configuration-resources:${platform.version}</resourceBundle>
+              </resourceBundles>
+          <properties>
+            <xwikiDbHbmCommonExtraMappings>activitystream.hbm.xml</xwikiDbHbmCommonExtraMappings>
+            <xwikiCfgEditCommentMandatory>1</xwikiCfgEditCommentMandatory>
+            <xwikiCfgDefaultSkin>curriki20</xwikiCfgDefaultSkin>
+            <xwikiCfgDefaultBaseSkin>albatross</xwikiCfgDefaultBaseSkin>
+            <xwikiCfgPlugins>\
+              com.xpn.xwiki.monitor.api.MonitorPlugin,\
+              com.xpn.xwiki.plugin.skinx.JsSkinExtensionPlugin,\
+              com.xpn.xwiki.plugin.skinx.CssSkinExtensionPlugin,\
+              com.xpn.xwiki.plugin.skinx.JsSkinFileExtensionPlugin,\
+              com.xpn.xwiki.plugin.skinx.CssSkinFileExtensionPlugin,\
+              com.xpn.xwiki.plugin.packaging.PackagePlugin,\
+              com.xpn.xwiki.plugin.query.QueryPlugin,\
+              com.xpn.xwiki.plugin.fileupload.FileUploadPlugin,\
+              com.xpn.xwiki.plugin.image.ImagePlugin,\
+              com.xpn.xwiki.plugin.userdirectory.UserDirectoryPlugin,\
+              com.xpn.xwiki.plugin.usertools.XWikiUserManagementToolsImpl,\              
+              com.xpn.xwiki.plugin.zipexplorer.ZipExplorerPlugin,\
+              com.xpn.xwiki.plugin.tag.TagPlugin, \
+              com.xpn.xwiki.plugin.autotag.AutoTagPlugin,\
+              com.xpn.xwiki.plugin.jodatime.JodaTimePlugin,\
+              com.xpn.xwiki.plugin.scheduler.SchedulerPlugin,\
+              com.xpn.xwiki.plugin.diff.DiffPlugin,\
+              com.xpn.xwiki.plugin.lucene.LucenePlugin,\
+              com.xpn.xwiki.plugin.rightsmanager.RightsManagerPlugin,\
+              com.xpn.xwiki.plugin.invitationmanager.plugin.InvitationManagerPlugin,\
+              com.xpn.xwiki.plugin.mail.MailPlugin,\
+              com.xpn.xwiki.plugin.mailsender.MailSenderPlugin,\
+              com.xpn.xwiki.plugin.activitystream.plugin.ActivityStreamPlugin, \
+              org.curriki.xwiki.plugin.framework.FrameworkManagerPlugin,\
+              org.curriki.xwiki.plugin.licence.LicenceManagerPlugin,\
+              org.curriki.xwiki.plugin.mimetype.MimeTypePlugin,\
+              org.curriki.xwiki.plugin.curriki.CurrikiPlugin,\
+              org.curriki.plugin.spacemanager.impl.CurrikiSpaceManager,\
+              org.curriki.plugin.activitystream.plugin.CurrikiActivityStreamPlugin
+            </xwikiCfgPlugins>
+            <xwikiCfgAdditionalProperties>
+## Spacemanager settings
+# Configure the spacemanager extension
+xwiki.spacemanager.extension=org.xwiki.plugin.spacemanager.impl.CurrikiSpaceManagerExtension
+
+# Set the groupname prefix
+xwiki.spacemanager.prefix=Group_
+
+# override the macro list
+xwiki.render.velocity.macrolist=/templates/macros.vm,/skins/albatross/macros.vm,\
+                /skins/curriki20/macros.vm,/skins/curriki20/blog/blogmacros.vm,\
+                /skins/curriki20/assets/assetsmacros.vm,/skins/curriki20/pages/pagesmacros.vm,\
+                /skins/curriki20/mycurriki/mycurrikimacros.vm,\
+                /skins/curriki20/groups/groupsmacros.vm,\
+                /skins/curriki20/groups/groupscontributions.vm,\
+                /skins/curriki20/groups/groupsdocs.vm,\
+                /skins/curriki20/groups/groupsmembers.vm,\
+                /skins/curriki20/groups/groupsmessages.vm,\
+                /skins/curriki20/groups/groupsroles.vm,\
+                /skins/curriki20/groups/groupsmycurriki.vm,\
+                /skins/curriki20/crs/crsmacros.vm,\
+                /skins/curriki20/bfcs/bfcsmacros.vm
+
+xwiki.invitationmanager.resourcespace=Groups
+            </xwikiCfgAdditionalProperties>
+            <xwikiCfgVirtual>0</xwikiCfgVirtual>
+            <xwikiCfgExo>0</xwikiCfgExo>
+            <xwikiCfgDefaultBaseSkin>albatross</xwikiCfgDefaultBaseSkin>
+            <xwikiCfgEncoding>UTF-8</xwikiCfgEncoding>
+          </properties>
+        </configuration>
+        </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>unpack-dependencies</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <!-- Unpack the Albatross skin -->
+                <artifactItem>
+                  <groupId>org.xwiki.platform</groupId>
+                  <artifactId>xwiki-platform-albatross</artifactId>
+                  <type>zip</type>
+                  <outputDirectory>${project.build.directory}/skin</outputDirectory>
+                </artifactItem>
+                <!-- Unpack the Toucan skin -->
+                <artifactItem>
+                  <groupId>org.xwiki.platform</groupId>
+                  <artifactId>xwiki-platform-toucan</artifactId>
+                  <type>zip</type>
+                  <outputDirectory>${project.build.directory}/skin</outputDirectory>
+                </artifactItem>
+                <!-- Unpack the Colibri skin -->
+                <artifactItem>
+                  <groupId>org.xwiki.platform</groupId>
+                  <artifactId>xwiki-platform-colibri</artifactId>
+                  <type>zip</type>
+                  <outputDirectory>${project.build.directory}/skin</outputDirectory>
+                </artifactItem>
+                <!-- We extract SmartClient library from smartGWT since smartGWT will use SmartClient from standard
+resources -->
+                <artifactItem>
+                  <groupId>com.smartgwt</groupId>
+                  <artifactId>smartgwt</artifactId>
+                  <version>${smartgwt.version}</version>
+                  <type>jar</type>
+                  <outputDirectory>${project.build.directory}/smartclient</outputDirectory>
+                  <!-- We exlude the default initsc.js file since we provide a modified
+version of it in web-standard sources -->
+                  <excludes>**/initsc.js</excludes>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <webResources>
+            <!-- Include License resources -->
+            <!--
+            <resource>
+              <directory>${project.build.directory}/maven-shared-archive-resources/META-INF</directory>
+              <targetPath>META-INF</targetPath>
+            </resource>
+            -->
+            <!-- Include Configuration files that were generated -->
+            <resource>
+              <directory>${project.build.directory}/maven-shared-archive-resources</directory>
+              <targetPath>WEB-INF</targetPath>
+              <includes>
+                <include>hibernate.cfg.xml</include>
+                <include>xwiki.cfg</include>
+                <include>xwiki.properties</include>
+              </includes>
+            </resource>
+            <!-- Add the skins -->
+            <resource>
+              <directory>${project.build.directory}/skin</directory>
+              <targetPath>skins</targetPath>
+              <filtering>false</filtering>
+            </resource>
+            <!-- Add SmartClient library -->
+            <resource>
+              <directory>${project.build.directory}/smartclient/com/smartclient/public/sc</directory>
+              <targetPath>resources/js/smartclient</targetPath>
+              <filtering>false</filtering>
+            </resource>
+            <!-- Add SmartClient skins -->
+            <resource>
+              <directory>${project.build.directory}/smartclient/com/smartclient/theme/enterprise/public/sc/skins</directory>
+              <targetPath>resources/js/smartclient/skins</targetPath>
+              <filtering>false</filtering>
+            </resource>
+          </webResources>
+          <!-- - Make sure we exclude JCL and LOGJ4 since we want all logging to go through SLF4J
+               - Exclude xwiki-platform-olcore because it's included in xwiki-platform-legacy-oldcore
+               - Excluded to prevent conflict in the patched version of Rhino used by yuicompressor used for JSX.
+               See http://jira.xwiki.org/jira/browse/XWIKI-6151 for more details.
+
+               Note: We use ?????? because we need to exclude log4j-1.2.16 but keep log4j-over-slf4j-1.6.1.jar
+               See http://jira.codehaus.org/browse/MWAR-81
+          -->
+          <packagingExcludes>
+            WEB-INF/lib/xwiki-platform-oldcore-*.jar,WEB-INF/lib/batik-js-*.jar,WEB-INF/lib/commons-logging-*.jar,WEB-INF/lib/log4j-??????.jar
+          </packagingExcludes>
+        </configuration>
+      </plugin>
+      <!-- Ensure that some modules are not added as dependencies. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>enforce-banned-dependencies</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <bannedDependencies>
+                  <excludes>
+                    <exclude>org.jmock:*</exclude>
+                    <exclude>junit:*</exclude>                   
+                    <exclude>javax.servlet:servlet-api:*:*:compile</exclude>                    
+                  </excludes>
+                  <includes>
+                    <!-- Allow only JUnit and JMock with scope test because -->
+                    <include>org.jmock:*:*:*:test</include>
+                    <include>junit:*:*:*:test</include>
+                  </includes>
+                </bannedDependencies>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  <profiles>
+    <profile>
+      <id>mysql</id>
+      <dependencies>
+        <dependency>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+          <version>5.1.5</version>
+        </dependency>
+      </dependencies>
+    </profile>
+  </profiles>
+  <repositories>
+   <!-- Needed for Smart GWT -->
+    <repository>
+      <id>smartgwt-maven</id>
+      <url>http://www.smartclient.com/maven2</url>
+    </repository>
+  </repositories>
+</project>
